@@ -1,0 +1,30 @@
+extends layout
+block content        
+    .column     
+    .container.column.is-one-third
+        .card
+            .card-content.card-head-custom.has-bg-success
+                p.title.is-4.has-text-centered.has-text-white #{title}                     
+            form(action='/users/signup' method='POST')
+                .field.is-two-third.column
+                    label.label Full Name
+                    .control.has-icons-left
+                        input.input(type='text', name='full_name', placeholder='John Doe')
+                        span.icon.is-small.is-left
+                            i.fa.fa-user  
+                .field.is-two-third.column
+                    label.label Username
+                    .control.has-icons-left
+                        input.input(type='text', name='username', placeholder='johnDoe')
+                        span.icon.is-small.is-left
+                            i.fa.fa-lock           
+                .field.is-two-third.column
+                    label.label Password
+                    .control.has-icons-left
+                        input.input(type='password', name='password', placeholder='abc123')
+                        span.icon.is-small.is-left
+                            i.fa.fa-key                           
+                .field.is-two-third.column.card-footer
+                    input.button.is-success.is-link(type='submit', value='Sign UP')
+            
+    

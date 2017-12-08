@@ -1,0 +1,10 @@
+extends layout
+
+block content
+    div.column
+        section.hero.is-info
+            div.hero-body
+                div.container
+                    if user
+                        h1.title #{user.name}'s  Home
+                        h2.subtitle Replace this Page with your home page text

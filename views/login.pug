@@ -1,0 +1,24 @@
+extends layout
+block content
+    .column
+    .container.column.is-one-third
+        .card
+            .card-content.card-head-custom
+                p.title.is-4.has-text-centered.has-text-white Login
+            form(action="login" method="POST").is-4by3
+                .field.is-two-third.column
+                    label.label Username
+                    .control.has-icons-left
+                        input.input(type='text', name='username', placeholder='johnDoe')
+                        span.icon.is-small.is-left
+                            i.fa.fa-user           
+                .field.is-two-third.column
+                    label.label Password
+                    .control.has-icons-left
+                        input.input(type='password', name='password', placeholder='abc123')
+                        span.icon.is-small.is-left
+                            i.fa.fa-key                           
+                .field.is-two-third.column.card-footer
+                    input.button.is-info.is-link(type='submit', value='Login')
+            
+    

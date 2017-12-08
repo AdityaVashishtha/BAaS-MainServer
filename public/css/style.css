@@ -1,0 +1,65 @@
+/* Primary color #209cee */
+/* Success color #23d160 */
+/* Danger color #ff3860 */
+#main_menu{
+    box-shadow: 0px 0px 1px 1px rgba(0,0,0,0.050);
+}
+.card-head-custom{
+    background: #209cee;
+    padding: 1em;    
+    text-align: center;    
+}
+.has-bg-info{
+    background: #209cee;
+}
+.has-bg-success{
+    background: #23d160;
+}
+form > .field:not(:last-child) {
+    margin-bottom: .005rem;
+}
+.notification.is-success,.notification.is-danger,.notification.is-info{
+    opacity: 0.85;
+}
+.notification.is-error{
+    background: #ffbc6b;
+    color: white;
+}
+
+/* CUSTOM SNACKBAR FOR USAGE */
+#snackbar {
+    visibility: hidden;
+    min-width: 250px; 
+    max-width: 400px;
+    margin-left: -125px; 
+    background-color: rgba(0,0,0,0.5);
+    color: #fff;
+    text-align: center; 
+    border-radius: 2px; 
+    padding: 16px; 
+    position: fixed;
+    z-index: 1; 
+    left: 50%; 
+    bottom: 30px; 
+}
+#snackbar.show {
+    visibility: visible; 
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;    
+}
+@-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+@keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+@-webkit-keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+}
+@keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+}

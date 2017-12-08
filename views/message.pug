@@ -1,0 +1,5 @@
+.container.is-one-third.column
+    each types in Object.keys(messages)        
+        each message in messages[types]
+            div(class="notification is-"+types)= message
+                button.delete
