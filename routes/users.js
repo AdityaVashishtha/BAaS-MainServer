@@ -2,6 +2,7 @@ const express = require('express');
 const bcrypt = require('bcryptjs');
 const { validationResult } = require('express-validator/check');
 const passport = require('passport');
+const crypto = require("crypto");
 
 const config = require('../config/config');
 const signup_validation = require('../config/validation_config');
@@ -9,6 +10,7 @@ const signup_validation = require('../config/validation_config');
 const router = express.Router();
 
 const User = require('../models/user.js');
+const Token = require('../models/tokens');
 
 router.get('/login',(req,res)=>{
     res.render('login',{title:'Login'});
@@ -61,6 +63,27 @@ router.post('/signup',signup_validation,(req,res)=>{
     }    
 });
 
+router.post('/login', 
+passport.authenticate('local', { failureRedirect: '/users/login', failureFlash: true }),
+function(req, res, next) {
+  // issue a remember me cookie if the option was checked
+  if (!req.body.remember_me) { return next(); }
+
+  var token = crypto.randomBytes(64).toString('hex');
+  let rm = Token();
+  rm.username = req.user.username;
+  rm.token = token;
+  rm.save((err)=>{
+    if (err) { return next(err); }
+    res.cookie('remember_me', token, { path: '/', httpOnly: true, maxAge: 604800000 }); // 7 days
+    return next();
+  });  
+},
+function(req, res) {
+  res.redirect('/');
+});
+
+/****
 router.post('/login',(req,res,next)=>{
     req.body.username = req.body.username.toLowerCase();
     passport.authenticate('local',{ 
@@ -68,8 +91,17 @@ router.post('/login',(req,res,next)=>{
         failureRedirect: '/users/login',
         failureFlash: true 
     })(req,res,next);
-});
+    // issue a remember me cookie if the option was checked
+    if (!req.body.remember_me) { return next(); }
 
+    var token = utils.generateToken(64);
+    Token.save(token, { userId: req.user.id }, function(err) {
+        if (err) { return done(err); }
+        res.cookie('remember_me', token, { path: '/', httpOnly: true, maxAge: 604800000 }); // 7 days
+        return next();
+    });
+});
+****/
 // Logout route
 router.get('/logout',(req,res)=>{
     req.logout();

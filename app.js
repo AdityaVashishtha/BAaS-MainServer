@@ -1,14 +1,16 @@
-const express = require("express")
-const path = require("path")
-const mongoose = require("mongoose")
-const bodyParser = require("body-parser")
-const session = require("express-session")
-const expressValidator = require("express-validator")
-const passport = require("passport")
-const config = require("./config/config")
-const db_config = require("./config/database")
-const flash = require("connect-flash")
-const app = express()
+const express = require("express");
+const path = require("path");
+const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
+const session = require("express-session");
+const expressValidator = require("express-validator");
+const passport = require("passport");
+const flash = require("connect-flash");
+const cookieParser = require("cookie-parser");
+const config = require("./config/config");
+const db_config = require("./config/database");
+
+const app = express();
 
 // Setting body parser
 // parse application/x-www-form-urlencoded
@@ -41,10 +43,14 @@ app.use(function (req, res, next) {
   next();
 });
 
+// Setting up cookie parser for remember me logic
+app.use(cookieParser());
+
 // Passport Initialization
 require('./config/passport')(passport)
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(passport.authenticate('remember-me'));
 
 // Setting global variable for user when logged in
 app.get('*',(req, res, next)=>{
