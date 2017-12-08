@@ -1,24 +1,38 @@
-extends layout
-block content
-    .column
-    .container.column.is-one-third
-        .card
-            .card-content.card-head-custom
-                p.title.is-4.has-text-centered.has-text-white Login
-            form(action="login" method="POST").is-4by3
-                .field.is-two-third.column
-                    label.label Username
-                    .control.has-icons-left
-                        input.input(type='text', name='username', placeholder='johnDoe')
-                        span.icon.is-small.is-left
-                            i.fa.fa-user           
-                .field.is-two-third.column
-                    label.label Password
-                    .control.has-icons-left
-                        input.input(type='password', name='password', placeholder='abc123')
-                        span.icon.is-small.is-left
-                            i.fa.fa-key                           
-                .field.is-two-third.column.card-footer
-                    input.button.is-info.is-link(type='submit', value='Login')
-            
-    
+extends includes 
+block includes 
+    // WRAPPER
+    #wrapper
+      .vertical-align-wrap
+        .vertical-align-middle
+          .auth-box
+            .left
+              .content
+                != messages('message', locals)                        
+                .header
+                  .logo.text-center
+                    img(src='/assets/img/logo-dark.png', alt='BAaS Logo')
+                  p.lead Login to your account
+                form.form-auth-small(action='/users/login' method='POST')
+                  .form-group
+                    label.control-label.sr-only(for='signin-email') Email
+                    input#signin-email.form-control(type='text', name='username', placeholder='johnDoe')
+                  .form-group
+                    label.control-label.sr-only(for='signin-password') Password
+                    input#signin-password.form-control(type='password', name='password', placeholder='abc123')
+                  .form-group.clearfix
+                    label.fancy-checkbox.element-left
+                      input(type='checkbox')
+                      span Remember me
+                  button.btn.btn-primary.btn-lg.btn-block(type='submit') LOGIN
+                  .bottom
+                    span.helper-text
+                      i.fa.fa-lock
+                      a(href='#') Forgot password?
+            .right
+              .overlay
+              .content.text
+                h1.heading POSITIVITY IS THE 
+                    span.fa.fa-key
+                p by The Develovers
+            .clearfix
+    // END WRAPPER

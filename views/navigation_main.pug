@@ -1,0 +1,145 @@
+extends includes 
+block includes 
+    // WRAPPER
+    #wrapper
+      // NAVBAR
+      nav.navbar.navbar-default.navbar-fixed-top
+        .brand
+          a(href='/')
+            img.img-responsive.logo(src='assets/img/logo-dark.png', alt='BAaS Logo')
+        .container-fluid
+          .navbar-btn
+            button.btn-toggle-fullwidth(type='button')
+              i.lnr.lnr-arrow-left-circle
+          form.navbar-form.navbar-left
+            .input-group
+              input.form-control(type='text', value='', placeholder='Search dashboard...')
+              span.input-group-btn
+                button.btn.btn-primary(type='button') Go          
+          #navbar-menu
+            ul.nav.navbar-nav.navbar-right
+              li.dropdown
+                a.dropdown-toggle.icon-menu(href='#', data-toggle='dropdown')
+                  i.lnr.lnr-alarm
+                  span.badge.bg-danger 5
+                ul.dropdown-menu.notifications
+                  li
+                    a.notification-item(href='#')
+                      span.dot.bg-warning
+                      | System space is almost full
+                  li
+                    a.notification-item(href='#')
+                      span.dot.bg-danger
+                      | You have 9 unfinished tasks
+                  li
+                    a.notification-item(href='#')
+                      span.dot.bg-success
+                      | Monthly report is available
+                  li
+                    a.notification-item(href='#')
+                      span.dot.bg-warning
+                      | Weekly meeting in 1 hour
+                  li
+                    a.notification-item(href='#')
+                      span.dot.bg-success
+                      | Your request has been approved
+                  li
+                    a.more(href='#') See all notifications
+              li.dropdown
+                a.dropdown-toggle(href='#', data-toggle='dropdown')
+                  i.lnr.lnr-question-circle
+                  span Help
+                  i.icon-submenu.lnr.lnr-chevron-down
+                ul.dropdown-menu
+                  li
+                    a(href='#') Basic Use
+                  li
+                    a(href='#') Working With Data
+                  li
+                    a(href='#') Security
+                  li
+                    a(href='#') Troubleshooting
+              li.dropdown
+                a.dropdown-toggle(href='#', data-toggle='dropdown')
+                  img.img-circle(src='assets/img/user.png', alt='Avatar')
+                  span= user.name.split(' ')[0]+' '
+                  i.icon-submenu.lnr.lnr-chevron-down
+                ul.dropdown-menu
+                  li
+                    a(href='#')
+                      i.lnr.lnr-user
+                      span My Profile
+                  li
+                    a(href='#')
+                      i.lnr.lnr-envelope
+                      span Message
+                  li
+                    a(href='#')
+                      i.lnr.lnr-cog
+                      span Settings
+                  li
+                    a(href='/users/logout')
+                      i.lnr.lnr-exit
+                      span Logout              
+      // END NAVBAR
+      // LEFT SIDEBAR
+      #sidebar-nav.sidebar
+        .sidebar-scroll
+          nav
+            ul.nav
+              li
+                a.active(href='/')
+                  i.lnr.lnr-home
+                  span Dashboard
+              li
+                a(href='elements.html')
+                  i.lnr.lnr-code
+                  span Elements
+              li
+                a(href='charts.html')
+                  i.lnr.lnr-chart-bars
+                  span Charts
+              li
+                a(href='panels.html')
+                  i.lnr.lnr-cog
+                  span Panels
+              li
+                a(href='notifications.html')
+                  i.lnr.lnr-alarm
+                  span Notifications
+              li
+                a.collapsed(href='#subPages', data-toggle='collapse')
+                  i.lnr.lnr-file-empty
+                  span Pages
+                  i.icon-submenu.lnr.lnr-chevron-left
+                #subPages.collapse
+                  ul.nav
+                    li
+                      a(href='page-profile.html') Profile
+                    li
+                      a(href='page-login.html') Login
+                    li
+                      a(href='page-lockscreen.html') Lockscreen
+              li
+                a(href='tables.html')
+                  i.lnr.lnr-dice
+                  span Tables
+              li
+                a(href='typography.html')
+                  i.lnr.lnr-text-format
+                  span Typography
+              li
+                a(href='icons.html')
+                  i.lnr.lnr-linearicons
+                  span Icons
+      // END LEFT SIDEBAR
+      // MAIN
+      block navigation      
+      .clearfix
+      footer
+        .container-fluid
+          p.copyright
+            | Copyright &copy 2017             
+            | BAaS
+    // END WRAPPER
+    

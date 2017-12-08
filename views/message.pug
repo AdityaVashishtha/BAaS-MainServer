@@ -1,5 +1,7 @@
-.container.is-one-third.column
+.column
     each types in Object.keys(messages)        
         each message in messages[types]
-            div(class="notification is-"+types)= message
-                button.delete
+            div(class="alert alert-dissmissible alert-"+types role='alert')
+                button.close(type='button', data-dismiss='alert', aria-label='Close')
+                    span(aria-hidden='true') ×                
+                |  #{message}
