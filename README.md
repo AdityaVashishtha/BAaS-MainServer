@@ -1,6 +1,6 @@
 # major-1.0
 
-Backend and Analytics as a Service
+![alt text](./public/assets/img/logo-dark.png "BAaS Logo")
 
 ## Guidelines
 -----------------------------------------------

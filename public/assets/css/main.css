@@ -31,8 +31,7 @@ html {
   min-height: 100%; }
 
 body {
-  background-color: #F3F5F8;
-  font-family: "Source Sans Pro", sans-serif;
+  background-color: #F3F5F8;  
   font-family: 'Raleway', sans-serif;
   font-size: 15px;
   color: #676a6d; }
@@ -828,12 +827,6 @@ ul.activity-list > li {
 
 .progress-bar-danger {
   background-color: #F9354C; }
-
-.alert-error {
-  color: #a94442;
-  background-color: #f2dede;
-  border-color: #ebccd1;
-}
 
 .weekly-summary {
   margin-bottom: 30px;

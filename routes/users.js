@@ -19,7 +19,7 @@ router.get('/login',(req,res)=>{
         res.render('login',{title:'Login'});
 });
 
-router.get('/signup',authenticateAccess,(req,res)=>{
+router.get('/signup',(req,res)=>{
     res.render('signup',{title:'Sign Up'});
 });
 

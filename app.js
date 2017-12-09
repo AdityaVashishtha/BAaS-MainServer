@@ -19,7 +19,8 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 
-// Connection to database
+// Connection to database with bluebird promise
+mongoose.Promise = require('bluebird');
 mongoose.connect(db_config.database,{useMongoClient: true});
 let db = mongoose.connection;
 db.on('error',(err)=>{
@@ -71,7 +72,6 @@ app.get('/',authenticateAccess,(req,res)=>{
     res.render('index',{title:'Home'});
 });
 
-
 // Authentication Check
 function authenticateAccess(req,res,next){
     if(req.isAuthenticated()){
@@ -85,7 +85,6 @@ function authenticateAccess(req,res,next){
 // Users route for login and register 
 let users = require("./routes/users")
 app.use('/users',users)
-
 
 // Server Listen on default port
 app.listen(config.port,()=>{
