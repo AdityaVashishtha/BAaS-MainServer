@@ -16,15 +16,20 @@
   margin-left: 5px; }
 
   .vertical-align-middle {
-    display: table-cell;  
+    /* display: table-cell;  
     vertical-align: middle;    
     padding-top: 10%;    
     display: flex;    
-    align-items: center;    
-  }
-
-  .vertical-align-wrap {
-    display : table;    
-  }
+    align-items: center;     */
+    display:flex;
+    justify-content:center;
+    align-items:center;   
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    margin:auto;
+    position:absolute;
+  }  
 
 /*# sourceMappingURL=demo.css.map */
