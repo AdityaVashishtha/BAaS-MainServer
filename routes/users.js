@@ -71,7 +71,10 @@ function(req, res, next) {
 
   var token = crypto.randomBytes(64).toString('hex');
   let rm = Token();
-  rm.username = req.user.username;
+  rm.username = req.body.username;
+  console.log('Username logging :: ');
+  console.log(rm.username);
+  console.log(req.body.remember_me);
   rm.token = token;
   rm.save((err)=>{
     if (err) { return next(err); }
@@ -104,6 +107,15 @@ router.post('/login',(req,res,next)=>{
 ****/
 // Logout route
 router.get('/logout',(req,res)=>{
+    res.clearCookie('remember_me');
+    if(res.locals.user) {
+        query = {username: res.locals.user.username};
+        Token.remove(query,(err,wop)=>{
+            if(err) console.log(err);
+            console.log('user logout token removal');
+            console.log(wop.result);
+        });
+    }    
     req.logout();
     req.flash('success','Succesfully logged out!');
     res.redirect('/users/login');

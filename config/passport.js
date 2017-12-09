@@ -42,35 +42,38 @@ module.exports = (passport)=>{
         function(token, done) {
             let query = {token: token};
             Token.findOne(query,(err,rememberMe)=>{
+
+                query = {token: token};
+                console.log('Query for deletion');
                 console.log(query);
-                if(rememberMe != null)
-                    query = {username: rememberMe.username};
-                else    
-                    return done(null, false);                     
-                console.log(rememberMe);
-                console.log(token);                
-                User.findOne(query,(err,user)=>{
-                    console.log(user);
+                Token.remove(query,(err,wop)=>{
                     if (err) { return done(err); }
-                    if (!user) {
-                         return done(null, false);                     
-                    }
-                    Token.remove(query,(err)=>{
+                    console.log('User after query deletion');
+                    console.log(wop.result)
+                    if(rememberMe != null)
+                        query = {username: rememberMe.username};
+                    else    
+                        return done(null, false);                                               
+                    User.findOne(query,(err,user)=>{
+                        console.log(user);
                         if (err) { return done(err); }
-                        return done(null, user);
-                    });                    
-                });
+                        if (!user) {
+                            return done(null, false);                     
+                        }
+                        return done(null, user);                                        
+                    });
+                });                                
             });                                  
         },
         function(user, done) {
             var token = crypto.randomBytes(64).toString('hex');
             let rm = Token();
-            rm.username = user;
+            rm.username = user.username;
             rm.token = token;
             rm.save((err)=>{
                 if (err) { return done(err); }
                 return done(null, token);
-            });            
+            });                            
         }
       ));
 }  
