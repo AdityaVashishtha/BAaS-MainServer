@@ -13,10 +13,13 @@ const User = require('../models/user.js');
 const Token = require('../models/tokens');
 
 router.get('/login',(req,res)=>{
-    res.render('login',{title:'Login'});
+    if(req.isAuthenticated())
+        res.redirect('/');
+    else
+        res.render('login',{title:'Login'});
 });
 
-router.get('/signup',(req,res)=>{
+router.get('/signup',authenticateAccess,(req,res)=>{
     res.render('signup',{title:'Sign Up'});
 });
 
@@ -98,5 +101,14 @@ router.get('/logout',(req,res)=>{
     req.flash('success','Succesfully logged out!');
     res.redirect('/users/login');
 });
+
+function authenticateAccess(req,res,next){
+    if(req.isAuthenticated()){
+        next();
+    } else {
+        req.flash('danger','Please Login first');
+        res.redirect('/users/login');
+    }
+}
 
 module.exports = router
