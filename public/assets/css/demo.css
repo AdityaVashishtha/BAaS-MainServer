@@ -17,10 +17,14 @@
 
   .vertical-align-middle {
     display: table-cell;  
-    vertical-align: middle;
-    padding-top: 10%;
-    display : flex;
-    align-items : center;    
+    vertical-align: middle;    
+    padding-top: 12%;    
+    display: flex;    
+    align-items: center;    
+  }
+
+  .vertical-align-wrap {
+    display : table;    
   }
 
 /*# sourceMappingURL=demo.css.map */
