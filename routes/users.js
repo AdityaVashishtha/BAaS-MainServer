@@ -66,15 +66,12 @@ router.post('/signup',signup_validation,(req,res)=>{
 router.post('/login', 
 passport.authenticate('local', { failureRedirect: '/users/login', failureFlash: true }),
 function(req, res, next) {
-  // issue a remember me cookie if the option was checked
+  // issue a remember me cookie if the option was checked 
   if (!req.body.remember_me) { return next(); }
-
   var token = crypto.randomBytes(64).toString('hex');
   let rm = Token();
-  rm.username = req.body.username;
-  console.log('Username logging :: ');
-  console.log(rm.username);
-  console.log(req.body.remember_me);
+  rm.username = req.body.username;  
+  
   rm.token = token;
   rm.save((err)=>{
     if (err) { return next(err); }
@@ -86,25 +83,6 @@ function(req, res) {
   res.redirect('/');
 });
 
-/****
-router.post('/login',(req,res,next)=>{
-    req.body.username = req.body.username.toLowerCase();
-    passport.authenticate('local',{ 
-        successRedirect: '/',
-        failureRedirect: '/users/login',
-        failureFlash: true 
-    })(req,res,next);
-    // issue a remember me cookie if the option was checked
-    if (!req.body.remember_me) { return next(); }
-
-    var token = utils.generateToken(64);
-    Token.save(token, { userId: req.user.id }, function(err) {
-        if (err) { return done(err); }
-        res.cookie('remember_me', token, { path: '/', httpOnly: true, maxAge: 604800000 }); // 7 days
-        return next();
-    });
-});
-****/
 // Logout route
 router.get('/logout',(req,res)=>{
     res.clearCookie('remember_me');

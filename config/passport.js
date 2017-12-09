@@ -42,10 +42,8 @@ module.exports = (passport)=>{
         function(token, done) {
             let query = {token: token};
             Token.findOne(query,(err,rememberMe)=>{
-
                 query = {token: token};
-                console.log('Query for deletion');
-                console.log(query);
+                console.log('Recreating token');
                 Token.remove(query,(err,wop)=>{
                     if (err) { return done(err); }
                     console.log('User after query deletion');
@@ -54,8 +52,7 @@ module.exports = (passport)=>{
                         query = {username: rememberMe.username};
                     else    
                         return done(null, false);                                               
-                    User.findOne(query,(err,user)=>{
-                        console.log(user);
+                    User.findOne(query,(err,user)=>{                        
                         if (err) { return done(err); }
                         if (!user) {
                             return done(null, false);                     

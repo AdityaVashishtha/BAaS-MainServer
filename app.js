@@ -53,7 +53,7 @@ app.use(passport.session());
 app.use(passport.authenticate('remember-me'));
 
 // Setting global variable for user when logged in
-app.get('*',(req, res, next)=>{
+app.get('*',(req, res, next)=>{    
     res.locals.user =req.user || null;
     next();
 });
@@ -66,7 +66,8 @@ app.set('views',path.join(__dirname,'views'));
 app.set('view engine','pug');
 
 // Index Page default Route set
-app.get('/',authenticateAccess,(req,res)=>{        
+app.get('/',authenticateAccess,(req,res)=>{     
+    console.log('Request from IP:: ' + req.connection.remoteAddress);   
     res.render('index',{title:'Home'});
 });
 
