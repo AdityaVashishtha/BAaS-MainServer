@@ -15,4 +15,12 @@
   margin-top: 5px;
   margin-left: 5px; }
 
+  .vertical-align-middle {
+    display: table-cell;  
+    vertical-align: middle;
+    padding-top: 10%;
+    display : flex;
+    align-items : center;    
+  }
+
 /*# sourceMappingURL=demo.css.map */
