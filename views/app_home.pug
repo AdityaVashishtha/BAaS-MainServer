@@ -1,0 +1,61 @@
+extends includes
+block includes
+    #wrapper
+        include navbar
+        block navbar
+        if sidebar
+            include left_sidebar
+            block left_sidebar
+        .main-content
+            .container-fluid.col-lg-10.col-lg-offset-2
+                h3.page-title Your Applications
+                .row                    
+                    .panel.col-md-3.no-padding
+                        .panel-heading
+                            h3.panel-title Some New Idea!
+                            .right
+                                button.btn-toggle-collapse(type='button')
+                                    i.lnr.lnr-chevron-up
+                                button.btn-remove(type='button')
+                                    i.lnr.lnr-cross
+                        .panel-body.no-padding.text-center
+                            .bg-primary.padding-top-30.padding-bottom-30
+                                i.lnr.lnr-laptop-phone.fa-5x
+                                h3 Creat New App
+                            div.padding-top-30.padding-bottom-30
+                                a(href="/appId" class="btn btn-lg wire-btn") ADD APP 
+                                    i.lnr.lnr-plus-circle
+                    .panel.col-md-3.no-padding
+                        .panel-heading
+                            h3.panel-title Library
+                            .right
+                                button.btn-toggle-collapse(type='button')
+                                    i.lnr.lnr-chevron-up
+                                button.btn-remove(type='button')
+                                    i.lnr.lnr-cross
+                        .panel-body.no-padding.text-center
+                            .bg-primary.padding-top-30.padding-bottom-30
+                                i.lnr.lnr-book.fa-5x
+                                h3 Simple Library                                
+                            div.padding-top-30.padding-bottom-30
+                                a(href="/appId" class="btn btn-lg wire-btn") Dashboard                                    
+                                a(href="/appId" class="btn btn-lg wire-btn") Settings
+                                a(href="/appId" class="btn btn-lg wire-btn") Logs
+                    .panel.col-md-3.no-padding
+                        .panel-heading
+                            h3.panel-title Library
+                            .right
+                                button.btn-toggle-collapse(type='button')
+                                    i.lnr.lnr-chevron-up
+                                button.btn-remove(type='button')
+                                    i.lnr.lnr-cross
+                        .panel-body.no-padding.text-center
+                            .bg-primary.padding-top-30.padding-bottom-30
+                                i.lnr.lnr-book.fa-5x
+                                h3 Simple Library                                
+                            div.padding-top-30.padding-bottom-30
+                                a(href="/appId" class="btn btn-lg wire-btn") Dashboard                                    
+                                a(href="/appId" class="btn btn-lg wire-btn") Settings
+                                a(href="/appId" class="btn btn-lg wire-btn") Logs
+
+                

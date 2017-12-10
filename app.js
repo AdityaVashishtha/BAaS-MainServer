@@ -21,7 +21,7 @@ app.use(bodyParser.json())
 
 // Connection to database with bluebird promise
 mongoose.Promise = require('bluebird');
-mongoose.connect(db_config.database,{useMongoClient: true});
+mongoose.connect(db_config.local,{useMongoClient: true});
 let db = mongoose.connection;
 db.on('error',(err)=>{
     console.log(err);
@@ -55,7 +55,7 @@ app.use(passport.authenticate('remember-me'));
 
 // Setting global variable for user when logged in
 app.get('*',(req, res, next)=>{    
-    res.locals.user =req.user || null;
+    res.locals.user = req.user || null;
     next();
 });
 
@@ -69,7 +69,28 @@ app.set('view engine','pug');
 // Index Page default Route set
 app.get('/',authenticateAccess,(req,res)=>{     
     console.log('Request from IP:: ' + req.connection.remoteAddress);   
-    res.render('index',{title:'Home'});
+    let page_param = {
+        title: 'Home',
+        search_bar: false,
+        navbar: true,
+        sidebar: false,
+        notification: true,
+        help_button: false
+    };
+    res.render('app_home',page_param);
+});
+
+app.get('/:appID',authenticateAccess,(req,res)=>{     
+    console.log('Request from IP:: ' + req.connection.remoteAddress + ' For app ::' + req.params.appID);   
+    let page_param = {
+        title: 'App Home',
+        search_bar: false,
+        navbar: true,
+        sidebar: true,
+        notification: true,
+        help_button: true
+    };
+    res.render('index',page_param);
 });
 
 // Authentication Check

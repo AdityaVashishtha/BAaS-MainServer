@@ -60,6 +60,22 @@ form > .field:not(:last-child) {
     background: linear-gradient(rgba(74,93,131,0.82), rgba(106, 83, 131, 0.82));
   }
 
+  .panel {
+      margin:  0.5em;
+  }
+  .panel-body > .bg-primary {
+      background: #4a5d83;;
+      background: linear-gradient(#4a5d83, #4c3565);  
+  }
+  .wire-btn {
+      border: 2px solid #4a5d83;
+      border-radius: 1.25em;
+      font-size: 1.2em;
+      font-weight: bold;
+      color: #4a5d83;
+      width: 75%;
+      margin: 0.5em;
+  }
 
 /* CUSTOM SNACKBAR FOR USAGE */
 #snackbar {

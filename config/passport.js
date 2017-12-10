@@ -9,7 +9,7 @@ const crypto = require('crypto');
 
 module.exports = (passport)=>{       
     passport.use(new LocalStrategy((username,password,done)=>{
-        let query = {username: username};
+        let query = {username: username.toLowerCase()};
         User.findOne(query,(err,user)=>{
             if(err) throw err;
             if(!user){

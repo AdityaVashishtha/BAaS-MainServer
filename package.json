@@ -4,7 +4,7 @@
   "description": "Node starter is a basic login logout structure - ready to use for rapid developement in any web application developement",
   "main": "app.js",
   "scripts": {
-    "start": "node app",
+    "start": "node app",    
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "AdityaVashishtha",

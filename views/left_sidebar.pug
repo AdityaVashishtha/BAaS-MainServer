@@ -1,0 +1,147 @@
+block sidebar
+      //Left Side bar    
+      #sidebar-nav.sidebar
+        .sidebar-scroll
+          nav
+            ul.nav
+              li
+                a(href="##")
+                    i.lnr.lnr-home
+                    span APP              
+              li
+                a.collapsed(href='#subCore', data-toggle='collapse')
+                  i.fa.fa-cogs
+                  span Core
+                  i.icon-submenu.lnr.lnr-chevron-left
+                #subCore
+                  ul.nav
+                    li
+                      a(href='#')
+                        i.fa.fa-user-o
+                        span Users
+                    li
+                        a(href='#')
+                            i.fa.fa-id-card
+                            span Session
+                    li
+                        a.collapsed(href='#db_tables', data-toggle='collapse')
+                            i.fa.fa-database
+                            span Database
+                            i.icon-submenu.lnr.lnr-chevron-left
+                        #db_tables.collapse
+                            ul.nav
+                                li
+                                    a(href='#')
+                                        i.fa.fa-table
+                                        span Table1
+                                li
+                                    a(href='#')
+                                        i.fa.fa-table
+                                        span Table2
+                                li
+                                    a(href='#')
+                                        i.fa.fa-table
+                                        span Table3
+                    li
+                        a.collapsed(href='#logs', data-toggle='collapse')
+                            i.lnr.lnr-file-empty
+                            span Logs
+                            i.icon-submenu.lnr.lnr-chevron-left
+                        #logs.collapse
+                            ul.nav
+                                li
+                                    a(href='#')
+                                        i.fa.fa-info-circle
+                                        span Info
+                                li
+                                    a(href='#')
+                                        i.fa.fa-exclamation-triangle
+                                        span Error
+                    li
+                        a(href='#')
+                            i.fa.fa-code
+                            span API Console
+              li
+                  a.collapsed(href='#push_notif', data-toggle='collapse')
+                      i.lnr.lnr-alarm
+                      span Push Notifications
+                      i.icon-submenu.lnr.lnr-chevron-left
+                  #push_notif.collapse
+                      ul.nav
+                          li
+                              a(href='#')
+                                  i.fa.fa-exclamation
+                                  span New Notification
+                          li
+                              a(href='#')
+                                  i.fa.fa-history
+                                  span View History
+                          li
+                              a.collapsed(href='#audience', data-toggle='collapse')
+                                  i.fa.fa-users
+                                  span Audience
+                                  i.icon-submenu.lnr.lnr-chevron-left
+                              #audience.collapse
+                                  ul.nav
+                                      li
+                                          a(href='#')
+                                              i.fa.fa-plus-circle
+                                              span Add
+                                      li
+                                          a(href='#')
+                                              i.fa.fa-pencil
+                                              span Edit
+                                      li
+                                          a(href='#')
+                                              i.fa.fa-trash-o
+                                              span Delete
+                  li
+                      a.collapsed(href='#analytics', data-toggle='collapse')
+                          i.fa.fa-line-chart
+                          span Analytics
+                          i.icon-submenu.lnr.lnr-chevron-left
+                      #analytics.collapse
+                          ul.nav
+                              li
+                                  a(href='#')
+                                      i.fa.fa-search
+                                      span Choose Algorithms
+                              li
+                                  a(href='#')
+                                      i.fa.fa-bar-chart
+                                      span View Graphs ?
+                              li
+                                  a(href='#')
+                                      i.fa.fa-question-circle
+                                      span ?
+                              li
+                                  a(href='#')
+                                      i.fa.fa-question-circle
+                                      span ?
+              li
+                  a.collapsed(href='#app_settings', data-toggle='collapse')
+                      i.fa.fa-wrench
+                      span App Settings
+                      i.icon-submenu.lnr.lnr-chevron-left
+                  #app_settings.collapse
+                      ul.nav
+                          li
+                              a.collapsed(href='#app_settings_general', data-toggle='collapse')
+                                  i.fa.fa-cog
+                                  span General
+                                  i.icon-submenu.lnr.lnr-chevron-left
+                              #app_settings_general.collapse
+                                  ul.nav
+                                      li
+                                          a(href='#')
+                                              i.fa.fa-stack-exchange
+                                              span App Management
+                                      li
+                                          a(href='#')
+                                              i.fa.fa-handshake-o
+                                              span Collaborators
+                          li
+                              a(href='#')
+                                  i.fa.fa-key
+                                  span Seurity Keys
+      // END LEFT SIDEBAR
