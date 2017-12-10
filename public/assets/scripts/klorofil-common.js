@@ -1,5 +1,9 @@
-$(document).ready(function() {
+var el = document.getElementById('items');
+var sortable = Sortable.create(el, {
+	handle: ".handle"
+  });
 
+$(document).ready(function() {
 
 	$(function() {
 		var data, options;
@@ -320,6 +324,12 @@ $(document).ready(function() {
 			toastr['info']($message);
 		});
 	}
+
+	$('.btn').click(function(){
+		$(this).addClass('animated');
+		$(this).addClass('bounceIn');				
+	});	
+		
 });
 
 // toggle function
@@ -337,10 +347,7 @@ $.fn.clickToggle = function( f1, f2 ) {
 		});
 	});
 	
-}
-
-function notifyToast(){
-	alert('s');
+	
 }
 
 

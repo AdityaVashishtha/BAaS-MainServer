@@ -62,9 +62,14 @@ form > .field:not(:last-child) {
 
   .panel {
       margin:  0.5em;
+      box-shadow: 0 0 0 0 ;
   }
-  .panel-body > .bg-primary {
-      background: #4a5d83;;
+  .panel-heading {
+    background: #4a5d83;
+    color: white;
+  }
+  .panel-body > .bg-primary  {
+      background: #4a5d83;
       background: linear-gradient(#4a5d83, #4c3565);  
   }
   .wire-btn {
@@ -76,7 +81,16 @@ form > .field:not(:last-child) {
       width: 75%;
       margin: 0.5em;
   }
-
+  .wire-btn:hover {    
+    opacity: 0.8;
+    color: #4a5d83;
+  }
+  .handle {      
+      margin-right: 0.50em;
+      font-size: 1.5em;
+      cursor: grab;
+  }
+   
 /* CUSTOM SNACKBAR FOR USAGE */
 #snackbar {
     visibility: hidden;
