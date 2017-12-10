@@ -62,11 +62,13 @@ form > .field:not(:last-child) {
 
   .panel {
       margin:  0.5em;
-      box-shadow: 0 0 0 0 ;
+      box-shadow: 0 0 0 0 ;            
   }
   .panel-heading {
     background: #4a5d83;
     color: white;
+    border-top-left-radius: 0.75em;
+    border-top-right-radius: 0.75em;
   }
   .panel-body > .bg-primary  {
       background: #4a5d83;
@@ -89,7 +91,7 @@ form > .field:not(:last-child) {
       margin-right: 0.50em;
       font-size: 1.5em;
       cursor: grab;
-  }
+  }  
    
 /* CUSTOM SNACKBAR FOR USAGE */
 #snackbar {
