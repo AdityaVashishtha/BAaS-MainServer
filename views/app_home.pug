@@ -55,19 +55,50 @@ block includes
                                 a(href="/appId" class="btn btn-lg wire-btn") Dashboard                                    
                                 a(href="/appId" class="btn btn-lg wire-btn") Settings
                                 a(href="/appId" class="btn btn-lg wire-btn") Logs  
-
-        // Modal
+        .loader
+            .load-bar
+                    .bar
+                    .bar
+                    .bar                              
+            .loading-bar.app-creation-loading.text-center
+                h2 Creating your App Please wait (Dummy) ...
+                i.fa.fa-cloud.fa-5x.animated.jello.infinite
+        // Modal For App Creation - Using Ajax for it
         #newappmodal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='newappmodalLabel', aria-hidden='true')
-            .modal-dialog
+            .modal-dialog.app-create-dialog
                 .modal-content
                     .modal-header
                         button.close(type='button', data-dismiss='modal', aria-label='Close')
                             span(aria-hidden='true') ×
-                        h4#newappmodalLabel.modal-title Create new App
-                    .modal-body
-                        | Create new app
+                        h4#newappmodalLabel.modal-title Create new App - Wizard
+                    .modal-body                    
+                        .form-group   
+                            .input-group                     
+                                span.input-group-addon
+                                    i.fa.fa-cloud
+                                input.form-control.input-lg( id="appName" placeholder="Application Name")
+                            small.form-text.text-danger (Required)
+                        a.text-info(data-toggle='collapse', href='#newAppAdvanceOptions', aria-expanded='false', aria-controls='multiCollapseExample1') Advance Option                             
+                        #newAppAdvanceOptions.collapse.multi-collapse                        
+                            hr                            
+                            .form-group               
+                                .input-group                     
+                                    span.input-group-addon
+                                        i.fa.fa-plug         
+                                    input.form-control.input-lg( type="number", placeholder="Port Number")                            
+                            .form-group               
+                                .input-group                     
+                                    span.input-group-addon
+                                        i.fa.fa-database         
+                                    input.form-control.input-lg( type="text" placeholder="External Database Link")
+                            .form-group
+                                .input-group
+                                    span.input-group-addon
+                                        i.fa.fa-file-code-o
+                                    input#basic-url.form-control.input-lg(type='text', placeholder="Start Route")                            
+                                small.form-text.text-info (eg. /, /users, /app etc)
                     .modal-footer
-                        button.btn.btn-success(type='button', onclick='', data-dismiss='modal') Create
+                        button.btn.btn-success#create-app-submit(type='button', onclick='', data-dismiss='modal') Create
                         button.btn.btn-danger(type='button', onclick='',data-dismiss='modal') Cancel
 
         

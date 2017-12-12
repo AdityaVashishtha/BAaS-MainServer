@@ -80,6 +80,18 @@ app.get('/',authenticateAccess,(req,res)=>{
     res.render('app_home',page_param);
 });
 
+app.post('/createApplication',(req,res)=>{
+    if(!req.user.username) {
+        res.status(401).send();
+        return;
+    } else {
+        console.log("Application Creation Request with params need to create application here. By ::" + req.user.username);
+        setTimeout(()=>{
+            res.send('3 Sec response(Dummy Response to do create application here!!)');
+        },3000);
+    }             
+});
+
 app.get('/:appID',authenticateAccess,(req,res)=>{     
     console.log('Request of (' + res.locals.user.username + ') from IP:: ' + req.connection.remoteAddress + ' For app ::' + req.params.appID);   
     let page_param = {

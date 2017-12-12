@@ -345,7 +345,32 @@ $(document).ready(function() {
 		$(this).addClass('animated');
 		$(this).addClass('rubberBand');				
 	});	
-			
+	
+	/* Create Application Post Form */
+	$('#create-app-submit').on('click',function(){
+		applicationData = {
+			name: 'Dummy'
+		};
+		$.ajax({			
+			url: '/createApplication',			
+			type: 'POST',
+			async: true,
+			data:applicationData,
+			beforeSend: function() {				
+				$('.loader').show();
+			},
+			error: function(xhr,status,error){				
+				$('.loader').hide();
+				alert("Some Error Occured :: " + error );
+			},
+			success: function(result) {
+				// Do something with the result				
+				$('.loader').hide();
+				alert(result);
+			}
+		});
+	});	
+
 });
 
 // toggle function
