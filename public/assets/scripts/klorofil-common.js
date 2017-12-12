@@ -1,7 +1,21 @@
 var el = document.getElementById('items');
-var sortable = Sortable.create(el, {
-	handle: ".handle"
-  });
+var order = ['1','2','3']
+//alert(document.cookie)
+if(el) {
+	var sortable = Sortable.create(el, {
+		handle: ".handle",
+		store:{
+			get: function(sortable){
+				order = document.cookie
+				return order.split(',');
+			},
+			set: function(){
+				order = sortable.toArray();
+				document.cookie = "order="+order;
+			}
+		}
+	  });	
+}
 
 $(document).ready(function() {
 
@@ -111,9 +125,11 @@ $(document).ready(function() {
 		setInterval(function() {
 			var randomVal;
 			randomVal = getRandomInt(0, 100);
-
-			sysLoad.data('easyPieChart').update(randomVal);
-			sysLoad.find('.percent').text(randomVal);
+			var elem = document.getElementsByClassName('handle');			
+			if(elem.length == 0) {
+				sysLoad.data('easyPieChart').update(randomVal);
+				sysLoad.find('.percent').text(randomVal);
+			}			
 		}, updateInterval);
 
 		function getRandomInt(min, max) {
@@ -325,11 +341,11 @@ $(document).ready(function() {
 		});
 	}
 
-	$('.btn').click(function(){
+	$('.wire-btn').click(function(){
 		$(this).addClass('animated');
-		$(this).addClass('bounceIn');				
+		$(this).addClass('rubberBand');				
 	});	
-		
+			
 });
 
 // toggle function

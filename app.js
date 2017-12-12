@@ -68,7 +68,7 @@ app.set('view engine','pug');
 
 // Index Page default Route set
 app.get('/',authenticateAccess,(req,res)=>{     
-    console.log('Request from IP:: ' + req.connection.remoteAddress);   
+    console.log('Request of (' + res.locals.user.username + ') from IP:: ' + req.connection.remoteAddress);   
     let page_param = {
         title: 'Home',
         search_bar: false,
@@ -81,7 +81,7 @@ app.get('/',authenticateAccess,(req,res)=>{
 });
 
 app.get('/:appID',authenticateAccess,(req,res)=>{     
-    console.log('Request from IP:: ' + req.connection.remoteAddress + ' For app ::' + req.params.appID);   
+    console.log('Request of (' + res.locals.user.username + ') from IP:: ' + req.connection.remoteAddress + ' For app ::' + req.params.appID);   
     let page_param = {
         title: 'App Home',
         search_bar: false,
