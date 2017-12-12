@@ -20,10 +20,13 @@ block includes
                         .panel-body.no-padding.text-center
                             .bg-primary.padding-top-30.padding-bottom-30
                                 i.lnr.lnr-laptop-phone.fa-5x
-                                h3 Creat New App
+                                h3 Create New App
                             div.padding-top-30.padding-bottom-30
-                                a(href="" class="btn btn-lg wire-btn") ADD APP 
+                                // Button trigger modal
+                                button.btn.btn-default(type='button', class="btn btn-lg wire-btn",data-toggle='modal', data-target='#newappmodal') Create app  
                                     i.lnr.lnr-plus-circle
+                                
+                                
                     .panel.col-md-3.no-padding.animated.flipInX.item
                         .panel-heading
                             h3.panel-title Library
@@ -53,5 +56,20 @@ block includes
                             div.padding-top-30.padding-bottom-30
                                 a(href="/appId" class="btn btn-lg wire-btn") Dashboard                                    
                                 a(href="/appId" class="btn btn-lg wire-btn") Settings
-                                a(href="/appId" class="btn btn-lg wire-btn") Logs                           
-                
+                                a(href="/appId" class="btn btn-lg wire-btn") Logs  
+
+        // Modal
+        #newappmodal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='newappmodalLabel', aria-hidden='true')
+            .modal-dialog
+                .modal-content
+                    .modal-header
+                        button.close(type='button', data-dismiss='modal', aria-label='Close')
+                            span(aria-hidden='true') ×
+                        h4#newappmodalLabel.modal-title Create new App
+                    .modal-body
+                        | Create new app
+                    .modal-footer
+                        button.btn.btn-success(type='button', onclick='', data-dismiss='modal') Create
+                        button.btn.btn-danger(type='button', onclick='',data-dismiss='modal') Cancel
+
+        
