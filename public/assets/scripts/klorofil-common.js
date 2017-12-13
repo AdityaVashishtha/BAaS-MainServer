@@ -348,27 +348,34 @@ $(document).ready(function() {
 	
 	/* Create Application Post Form */
 	$('#create-app-submit').on('click',function(){
+		var applicationName = $('input[name="applicationName"]').val();		
+		var port = $('input[name="portNumber"]').val();		
 		applicationData = {
-			name: 'Dummy'
-		};
-		$.ajax({			
-			url: '/createApplication',			
-			type: 'POST',
-			async: true,
-			data:applicationData,
-			beforeSend: function() {				
-				$('.loader').show();
-			},
-			error: function(xhr,status,error){				
-				$('.loader').hide();
-				alert("Some Error Occured :: " + error );
-			},
-			success: function(result) {
-				// Do something with the result				
-				$('.loader').hide();
-				alert(result);
-			}
-		});
+			applicationName: applicationName,
+			port: port			
+		};		
+		if(applicationCreationValidation(applicationData)) {
+			$.ajax({			
+				url: '/createApplication',			
+				type: 'POST',				
+				data:applicationData,
+				beforeSend: function() {				
+					$('.loader').show();
+				},
+				error: function(xhr,status,error){				
+					$('.loader').hide();
+					alert("Some Error Occured :: " + error );
+				},
+				success: function(result) {
+					// Do something with the result				
+					$('.loader').hide();
+					$('.input-lg').val('');
+					toastr.options.timeOut = false;
+					toastr.options.closeButton = true;
+					toastr['success']('Application Created <b>Successfully!</b> status:('+result+')');
+				}
+			});
+		} 	
 	});	
 
 });
@@ -386,9 +393,32 @@ $.fn.clickToggle = function( f1, f2 ) {
 			clicked = true;
 			return f1.apply(this, arguments);
 		});
-	});
-	
-	
+	});		
+}
+
+function applicationCreationValidation(applicationData){
+	var errorMessages = {
+		appNameError: 'Application Name is <b>Required</b> should be <b>Alphanumeric</b> with no spaces.',
+		portError: 'Port can only be positive number in range(3000,65000).',
+		dbLinkError: 'External Database can take URL only.'
+	};
+	var expr = /^[a-z0-9]+$/i;
+	var isValid = expr.test(applicationData.applicationName);
+	if(!isValid) {
+		toastr.options.timeOut = false;
+		toastr.options.closeButton = true;
+		toastr['error'](errorMessages.appNameError);
+		return false;
+	} 
+	if(applicationData.port.length > 0) {				
+		if(isNaN(applicationData.port) || applicationData.port < 3000 || applicationData.port > 65000 ) {			
+			toastr.options.timeOut = false;
+			toastr.options.closeButton = true;
+			toastr['error'](errorMessages.portError);
+			return false;
+		}
+	} 		
+	return isValid;		
 }
 
 

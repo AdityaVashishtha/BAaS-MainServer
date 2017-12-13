@@ -81,11 +81,11 @@ app.get('/',authenticateAccess,(req,res)=>{
 });
 
 app.post('/createApplication',(req,res)=>{
-    if(!req.user.username) {
-        res.status(401).send();
+    if(!req.user) {
+        res.status(401).send('Error 401: Unauthorised Access');
         return;
     } else {
-        console.log("Application Creation Request with params need to create application here. By ::" + req.user.username);
+        console.log("Application Creation Request By ::" + req.user.username);
         setTimeout(()=>{
             res.send('3 Sec response(Dummy Response to do create application here!!)');
         },3000);

@@ -76,27 +76,17 @@ block includes
                             .input-group                     
                                 span.input-group-addon
                                     i.fa.fa-cloud
-                                input.form-control.input-lg( id="appName" placeholder="Application Name")
+                                input.form-control.input-lg( name="applicationName", placeholder="Application Name")
                             small.form-text.text-danger (Required)
                         a.text-info(data-toggle='collapse', href='#newAppAdvanceOptions', aria-expanded='false', aria-controls='multiCollapseExample1') Advance Option                             
                         #newAppAdvanceOptions.collapse.multi-collapse                        
-                            hr                            
+                            hr                                                        
                             .form-group               
                                 .input-group                     
                                     span.input-group-addon
-                                        i.fa.fa-plug         
-                                    input.form-control.input-lg( type="number", placeholder="Port Number")                            
-                            .form-group               
-                                .input-group                     
-                                    span.input-group-addon
-                                        i.fa.fa-database         
-                                    input.form-control.input-lg( type="text" placeholder="External Database Link")
-                            .form-group
-                                .input-group
-                                    span.input-group-addon
-                                        i.fa.fa-file-code-o
-                                    input#basic-url.form-control.input-lg(type='text', placeholder="Start Route")                            
-                                small.form-text.text-info (eg. /, /users, /app etc)
+                                        i.fa.fa-cogs         
+                                    input.form-control.input-lg( type="text", name="portNumber" placeholder="Port Number")
+                                small.form-text.text-danger (Valid Range 3000-65000)
                     .modal-footer
                         button.btn.btn-success#create-app-submit(type='button', onclick='', data-dismiss='modal') Create
                         button.btn.btn-danger(type='button', onclick='',data-dismiss='modal') Cancel

@@ -1,6 +1,7 @@
 config = {
     port: 3000,
-    secret: 'yoursecret'    
+    secret: 'yoursecret',
+    appStorageFolder: '../_generated_application'
 }
 
 
