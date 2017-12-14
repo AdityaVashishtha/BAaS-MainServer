@@ -1,0 +1,47 @@
+#settings_navbar_wrapper{
+    background-color: rgb(104, 162, 238);    
+}
+
+a {
+    color: rgb(54, 48, 48);
+}
+
+
+#settings_navbar_wrapper li:hover{
+    color: red;        
+}
+
+#clear_all{
+    color:  black;
+    margin: 10px;
+    border-radius: 10%; 
+    background-color: rgb(240, 238, 238); 
+}
+#clear_all:hover{
+    background-color: rgb(153, 149, 149); 
+}
+
+#add_filter{
+    color:  black;
+    margin: 10px;
+    border-radius: 10%; 
+    background-color: rgb(240, 238, 238); 
+}
+#add_filter:hover{
+    background-color: rgb(153, 149, 149); 
+}
+
+#apply_filter{
+    float: right;
+    color:  black;
+    margin: 10px;
+    border-radius: 10%; 
+    background-color: rgb(153, 149, 149);   
+}
+#apply_filter:hover{
+    background-color: rgb(104, 162, 238);   
+}
+
+#settings_navbar_wrapper .filter{
+    width: 500% !important;    
+}

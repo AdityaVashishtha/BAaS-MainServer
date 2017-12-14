@@ -1,0 +1,51 @@
+block horizontal_navbar
+    // hORIZONTAL NAVBAR START 
+    #settings_navbar_wrapper.nav
+        .container-fluid
+          #navbar-menu
+            ul.nav.navbar-nav.navbar-right
+              ul.nav.navbar-nav.navbar-right
+              li.dropdown
+                a.dropdown-toggle(href='#', data-toggle='dropdown')
+                  i.fa.fa-filter
+                  span  Filter                  
+                ul.dropdown-menu.filter
+                  li
+                    select#field_select.form-control
+                      option elementId
+                      option Field2
+                      option Field3
+                      option Field4
+
+                  li
+                    button#clear_all.btn.btn-default.clear(type='button') Clear All
+                    button#add_filter.btn.btn-default(type='button') Add Filter
+                    button#apply_filter.btn.btn-default(type='button') Apply
+                  
+              li.dropdown
+                a.dropdown-toggle(href='#', data-toggle='dropdown')
+                  i.fa.fa-lock
+                  span  Security                  
+                ul.dropdown-menu
+                  li
+                    a(href='#') xyz
+              li.dropdown
+                a.dropdown-toggle(href='#', data-toggle='dropdown')
+                  i.fa.fa-pencil-square-o
+                  span  Edit                  
+                ul.dropdown-menu
+                  li
+                    a(href='#') Add Row
+                  li
+                    a(href='#') Add Column
+                  li
+                    a(href='#') Delete Selected Row
+                  li
+                    a(href='#') Delete Column
+                  li
+                    a(href='#') Delete All Rows
+                  li
+                    a(href='#') Import Data
+                  li
+                    a(href='#') Export Data
+    // hORIZONTAL NAVBAR END
