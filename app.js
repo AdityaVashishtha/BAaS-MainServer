@@ -92,18 +92,6 @@ app.post('/createApplication',(req,res)=>{
     }             
 });
 
-app.get('/:appID',authenticateAccess,(req,res)=>{     
-    console.log('Request of (' + res.locals.user.username + ') from IP:: ' + req.connection.remoteAddress + ' For app ::' + req.params.appID);   
-    let page_param = {
-        title: 'App Home',
-        search_bar: false,
-        navbar: true,
-        sidebar: true,
-        notification: true,
-        help_button: true
-    };
-    res.render('index',page_param);
-});
 
 // Authentication Check
 function authenticateAccess(req,res,next){
@@ -118,6 +106,11 @@ function authenticateAccess(req,res,next){
 // Users route for login and register 
 let users = require("./routes/users")
 app.use('/users',users)
+
+//App Dashboard Main Route
+let app_dashboard = require('./routes/app_dashboard');
+app.use('/dashboard',app_dashboard);
+
 
 // Server Listen on default port
 app.listen(config.port,()=>{

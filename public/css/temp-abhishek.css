@@ -1,0 +1,4 @@
+.container-fluid > .title{
+    border-bottom: 2px solid #0ac;
+    padding-bottom: 1em;
+}

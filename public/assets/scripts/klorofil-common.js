@@ -107,7 +107,7 @@ $(document).ready(function() {
 		new Chartist.Bar('#visits-chart', data, options);
 
 
-		// real-time pie chart
+		//real-time pie chart
 		var sysLoad = $('#system-load').easyPieChart({
 			size: 130,
 			barColor: function(percent) {
@@ -346,13 +346,50 @@ $(document).ready(function() {
 		$(this).addClass('rubberBand');				
 	});	
 	
+	//Ajax request related to shubham's analytics content
+	$('#app-analytics').click(function(){		
+		console.log(window.location);
+		$.ajax({
+			url: '/dashboard/analytics',
+			type:'GET',
+			success: function(result){						
+				$('.main-content').html(result);
+			},
+			error: function(xhr,status,err){
+				alert('Error :: ('+status+') '+err);
+			}
+		});
+	});
+
+	//Ajax request related to shubham's analytics content
+	$('#app-config').click(function(){
+		$.ajax({
+			url: '/dashboard/config',
+			type:'GET',
+			success: function(result){				
+				$('.main-content').html(result);
+			}
+		});
+	});
+
+	//Ajax request related to shubham's analytics content
+	$('#app-database').click(function(){
+		$.ajax({
+			url: '/dashboard/database',
+			type:'GET',
+			success: function(result){				
+				$('.main-content').html(result);
+			}
+		});
+	});
+
 	/* Create Application Post Form */
 	$('#create-app-submit').on('click',function(){
 		var applicationName = $('input[name="applicationName"]').val();		
 		var port = $('input[name="portNumber"]').val();		
 		applicationData = {
 			applicationName: applicationName,
-			port: port			
+			port: port
 		};		
 		if(applicationCreationValidation(applicationData)) {
 			$.ajax({			
