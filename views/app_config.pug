@@ -1,3 +1,294 @@
 link(rel="stylesheet", href="css/temp-abhishek.css")
+
 .container-fluid
-    h3.title Config File Todo Abhishek
+    h3.title App Configuration
+    //#info_wrapper.col-md-12
+
+    //App Info Start
+    .clearfix
+        #info_wrapper.panel
+            .panel-heading
+                .left 
+                    button(type='button' onclick='min_max()')
+                        span
+                            | ___
+                h3.panel-title.text-center Application Information
+                .right
+                    button(type='button' onclick='editContent()' data-toggle='tooltip' data-placement='top' title="Edit")
+                        span#edit_toggle
+                            i.fa.fa-circle-o &nbsp;
+                            i.fa.fa-circle-o &nbsp;
+                            i.fa.fa-circle-o
+                    //button.btn-toggle-collapse(type='button')
+                        i.lnr.lnr-chevron-up
+                    //button.btn-remove(type='button')
+                        i.lnr.lnr-cross
+
+            #min_max_box.panel-body.content1
+                #app_name.col-md-8.col-md-offset-2.app_name
+                    .row
+                        .col-md-5.app_name_field App-Name
+                        #app_name_value.col-md-7.app_name_value firstApp
+                    .row
+                        .col-md-12.app_descp_field 
+                            |Description 
+                    .row
+                        #app_descp_value.col-md-12.app_descp_value D as dsa dsa dds ds ds dds d das sd sda s dsa d sad as sdaas d  s d a e  scription
+                    .row
+                        .col-md-5.production In-Production ?
+                        .col-md-2.toggle_box 
+                            label.switch
+                                input(type='checkbox')
+                                span.slider.round
+                        .col-md-5.deployed Deployed !
+                    .row
+                        .col-md-6.keys
+                            .row
+                                .col-md-12 
+                                    button.button(type='button', data-toggle='modal', data-target='#security_keys_modal') 
+                                        i.fa.fa-key &nbsp;
+                                        | Security Keys
+                        .col-md-6.collaborators
+                            .row
+                                .col-md-12 
+                                    button.button(type='button', data-toggle='modal', data-target='#collaborators_modal') 
+                                        i.fa.fa-handshake-o &nbsp;
+                                        |Collaborators
+    //App Info END
+
+
+// Security key modal start
+#security_keys_modal.modal.fade(role='dialog')
+  .modal-dialog.modal-lg
+    // Modal content
+    .modal-content
+      .modal-header
+        button.close(type='button', data-dismiss='modal') ×
+        h3.modal-title.text-center Security Keys
+        h5#header_detail.modal-title.text-center Unique Identifiers for app access.
+      .modal-body
+        .container-fluid(onmousedown='return false')
+            .row
+                .col-md-5.labelx 
+                    span.security_label Application ID
+                    span.security_descp Main ID uniquely specifying this app.
+                .col-md-5.text-center.key_value_col
+                    span#key_value_appID.key_value hSPuhx4TtBa6OxQJYAHg0ZVjb1tIxBcFOnXH9qTe
+                .col-md-2.copy_btn_col
+                    span.copy_btn
+                        button.btn.btn-info.btn-xs(type='button' onclick="copyToClipboard('#key_value_appID');selectText('key_value_appID');") 
+                            i.fa.fa-clipboard &nbsp;
+                            | Copy
+            .row
+                .col-md-5.labelx 
+                    span.security_label Master Key
+                    span.security_descp Overrides all permissions.
+                .col-md-5.text-center.key_value_col
+                    span#key_value_master_key.key_value FR9cWSdOBaFymVR7XqlL9rWIl02PkY4IzQDlWLiw
+                .col-md-2.copy_btn_col
+                    span.copy_btn
+                        button.btn.btn-info.btn-xs(type='button' onclick="copyToClipboard('#key_value_master_key');selectText('key_value_master_key');") 
+                            i.fa.fa-clipboard &nbsp;
+                            | Copy
+            .row
+                .col-md-5.labelx 
+                    span.security_label REST API Key
+                    span.security_descp Making request from server-side REST applications.
+                .col-md-5.text-center.key_value_col
+                    span#key_value_rest_api_key.key_value KfPkPkNSwPjDSDmTqo23CfThYsCYRUPMmlbb6tI9
+                .col-md-2.copy_btn_col
+                    span.copy_btn
+                        button.btn.btn-info.btn-xs(type='button' onclick="copyToClipboard('#key_value_rest_api_key');selectText('key_value_rest_api_key');") 
+                            i.fa.fa-clipboard &nbsp;
+                            | Copy
+            .row
+                .col-md-5.labelx 
+                    span.security_label JavaScript Key
+                    span.security_descp Making request from JavaScript clients.
+                .col-md-5.text-center.key_value_col
+                    span#key_value_javascript_key.key_value h2qFCzawREMyElT2802FSHIthjtMezE5qk8M6psz
+                .col-md-2.copy_btn_col
+                    span.copy_btn
+                        button.btn.btn-info.btn-xs(type='button' onclick="copyToClipboard('#key_value_javascript_key');selectText('key_value_javascript_key');") 
+                            i.fa.fa-clipboard &nbsp;
+                            | Copy
+            .row
+                .col-md-5.labelx 
+                    span.security_label Other Keys
+                    span.security_descp /*Comment-"Can be added here".*/
+                .col-md-5.text-center.key_value_col
+                    span#key_value_rename_here_key.key_value Q7zqOShZ7xjvzDJkJckW2vvUjepoR4wpVmvsdJO4
+                .col-md-2.copy_btn_col
+                    span.copy_btn
+                        button.btn.btn-info.btn-xs(type='button' onclick="copyToClipboard('#key_value_rename_here_key');selectText('key_value_rename_here_key');") 
+                            i.fa.fa-clipboard &nbsp;
+                            | Copy
+    //-           
+      .modal-footer
+        button.btn.btn-info.btn-md(type='button', data-dismiss='modal') Close
+// Security key modal end
+
+
+// Collaborators modal start
+#collaborators_modal.modal.fade(role='dialog')
+  form(action='#').modal-dialog
+    // Modal content
+    .modal-content
+      .modal-header
+        button.close(type='button', data-dismiss='modal') ×
+        h3.modal-title.text-center Collaborators
+        h5#header_detail.modal-title.text-center Working together is Success.
+      .modal-body
+        .container-fluid
+            .row
+                .col-md-5.collab_label
+                    span.collab_label_head Add new collaborator
+                    span.collab_label_descp Collaborator will have R/W access but cannot delete app or add collaborators.
+                .col-md-7.collab_descp
+                        .form-group
+                            input#email.form-control(type='email', placeholder='What\'s their email?', name='email')
+            
+                
+      .modal-footer
+        
+        button.btn.btn-default(type='button', data-dismiss='modal') Close
+        button.btn.btn-info.btn-md(type='submit') 
+            i.fa.fa-plus-circle &nbsp;
+            |Add
+// Collaborators modal end
+
+
+//Tabbed Content Start
+.container-fluid
+  .panel.panel-profile
+    .clearfix
+      div
+        // TABBED CONTENT
+        .custom-tabs-line.tabs-line-bottom.left-aligned
+          ul.nav(role='tablist')
+            li.active
+              a(href='#tab-bottom-left1', role='tab', data-toggle='tab') App Management
+            li
+              a(href='#tab-bottom-left2', role='tab', data-toggle='tab')
+                | Other Options
+                span.badge 5
+            
+        .tab-content
+            #tab-bottom-left1.tab-pane.fade.in.active
+                ul.list-unstyled.activity-timeline
+                    li
+                        span.timestamp.text-center These options will affect your entire app.
+                    li
+                        a(href='#', data-toggle='modal', data-target='#clean_app_modal') 
+                            i.fa.fa-trash.activity-icon
+                        p
+                        | Clean up app 
+                        span.timestamp This will delete any files that are not referenced by any objects. (Don't use the feature if you have Arrays of Files,or Files inside Object columns!)
+                    li
+                        a(href='#', data-toggle='modal', data-target='#clean_log_modal') 
+                            i.fa.fa-exclamation-triangle.activity-icon
+                        p
+                        | Clean up log
+                        span.timestamp This will purge your System Log.
+                    li
+                        a(href='#', data-toggle='modal', data-target='#user_session_modal') 
+                            i.fa.fa-clock-o.activity-icon
+                        p
+                        | User Sessions.
+                        span.timestamp Set the session expiration length.
+                    li
+                        a(href='#', data-toggle='modal', data-target='#other_function_modal') 
+                            i.fa.fa-plus.activity-icon
+                        p
+                        | Can be added further
+                        span.timestamp Just add here any more functions.
+                    
+            #tab-bottom-left2.tab-pane.fade
+                |Other Options contents here.
+                
+        // END TABBED CONTENT
+#snackbar Files Deleted.
+// clean_app_modal modal start
+#clean_app_modal.modal.fade(role='dialog')
+  .modal-dialog
+    // Modal content
+    .modal-content
+      .modal-header
+        .col-md-10
+            h3.modal-title.text-center Clean Untracked Files
+            h5#header_detail.modal-title.text-center The files without DB references will be removed !
+        .col-md-2
+            i.fa.fa-ravelry.fa-3x
+      .modal-body.text-center
+        button.btn.btn-default.btn-lg.cancel_modal(type='button', data-dismiss='modal') Cancel
+        button.btn.btn-info.btn-lg.submit_modal(type='submit' , data-dismiss='modal', onclick="snackbar_function('snackbar');") Purge Files
+        
+// clean_app_modal modal end
+
+// clean_log_modal modal start
+#clean_log_modal.modal.fade(role='dialog')
+  .modal-dialog
+    // Modal content
+    .modal-content
+      .modal-header
+        .col-md-10
+            h3.modal-title.text-center Clean System Logs
+            h5#header_detail.modal-title.text-center All the System logs will be removed !
+        .col-md-2
+            i.fa.fa-ravelry.fa-3x
+      .modal-body.text-center
+        button.btn.btn-default.btn-lg.cancel_modal(type='button', data-dismiss='modal') Cancel
+        button.btn.btn-info.btn-lg.submit_modal(type='submit' , data-dismiss='modal') Purge System Log
+        
+// clean_log_modal modal end
+
+// user_session_modal modal start
+#user_session_modal.modal.fade(role='dialog')
+  form(action='#').modal-dialog
+    // Modal content
+    .modal-content
+      .modal-header
+        .col-md-10
+            h3.modal-title.text-center User Session
+            h5#header_detail.modal-title.text-center Set the session expiration in days.
+        .col-md-2
+            i.fa.fa-cubes.fa-3x
+      .modal-body.container-fluid
+            .row
+                .col-md-5.collab_label
+                    span.collab_label_head Session Length
+                    span.collab_label_descp (in days)
+                .col-md-7.collab_descp
+                        .form-group
+                            input#session_select.form-control.bfh-number(type='number' , value = "30", min="1" max="30")
+      .modal-footer
+        button.btn.btn-default(type='button', data-dismiss='modal') Close
+        button.btn.btn-info.btn-md(type='submit') 
+            |Ok
+// user_session_modal modal end
+
+
+// other_function_modal modal start
+#other_function_modal.modal.fade(role='dialog')
+  form(action='#').modal-dialog
+    // Modal content
+    .modal-content
+      .modal-header
+        .col-md-10
+            h3.modal-title.text-center Other Function
+            h5#header_detail.modal-title.text-center It's description !
+        .col-md-2
+            i.fa.fa-ravelry.fa-3x
+      .modal-body.text-center
+        button.btn.btn-default.btn-lg.cancel_modal(type='button', data-dismiss='modal') Cancel
+        button.btn.btn-info.btn-lg.submit_modal(type='submit' , data-dismiss='modal') Action
+// other_function_modal modal end
+
+//Tabbed Content End
+
+
+
+
+
+
+

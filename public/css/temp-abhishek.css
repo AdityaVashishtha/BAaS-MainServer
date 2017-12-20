@@ -1,4 +1,420 @@
+/*
+************************************Delete this after work on tab content ************************************
+
+#min_max_box{
+  display: none;
+}
+
+************************************Delete this after work on tab content ************************************
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+/* App Info CSS Start */
+
 .container-fluid > .title{
     border-bottom: 2px solid #0ac;
     padding-bottom: 1em;
 }
+
+.box{
+    border: 1px solid black;
+    
+}
+
+.row {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
+  flex-wrap: wrap;
+}
+.row > [class*='col-'] {
+  display: flex;
+  flex-direction: column;
+}
+
+.app_name{
+    margin-top: 5%;
+    margin-bottom: 3%;
+    border: 2px solid rgb(133, 129, 129, 0.3);
+}
+
+.app_name .row:first-child{
+        border-bottom: 2px solid rgba(240, 181, 181, 0.2);
+}
+
+.app_name_field{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 1.5em;
+    font-weight: bold;
+    background-color: white;
+}
+
+.app_name_value{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 1.5em;
+    text-align: center;
+    background-color: rgb(216, 210, 210, 0.3);
+}
+
+#info_wrapper{
+  margin-bottom: 2%;
+}
+
+.content1{
+    background-color: rgba(240, 181, 181, 0.2);
+}
+
+.app_descp_field{
+    font-size: 1.2em;
+    font-weight: bold;
+    background-color: white;   
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid rgb(255, 0, 0, .4);
+}
+
+.app_descp_value{
+    font-size: 1.2em;
+    background-color: rgb(216, 210, 210, 0.3); 
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 7%;
+    padding-right: 4%;
+    border-bottom: 2px solid rgba(240, 181, 181, 0.2);
+}
+
+
+ /* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {display:none;}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: rgb(0, 230, 0, 0.6);
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px rgb(0, 230, 0, 0.6);
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+} 
+
+.production{
+    padding-top: 15px;
+    padding-bottom: 10px;
+    font-size: 1.2em;
+    background-color: white;
+    text-align: right;
+}
+
+.toggle_box{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 3.5%;
+    background-color: white;
+}
+
+.deployed{
+    padding-top: 15px;
+    padding-bottom: 10px;
+    font-size: 1.2em;
+    background-color: white;
+    text-align: left;
+}
+
+.app_name .row:nth-child(4){
+        border-bottom: 2px solid rgba(240, 181, 181, 0.2);
+}
+
+.keys .row{
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-size: 1.5em;
+    background-color: white;
+    text-align: center;
+}
+
+.collaborators .row{
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-size: 1.5em;
+    background-color: white;
+    text-align: center;
+}
+
+
+.keys .button, .collaborators .button{
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  background-color: #72bbf3;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px rgb(194, 193, 193);
+}
+
+.keys .button:hover, .collaborators .button:hover{
+  background-color: rgb(76, 170, 241);
+  background: rgb(76, 170, 241);
+}
+
+.keys .button:active, .collaborators .button:active{
+  background-color: rgb(76, 170, 241);
+  box-shadow: 0 5px rgb(138, 137, 137);
+  transform: translateY(4px);
+}
+
+.modal-header{
+  background: #4a5d83;
+  color: white;
+}
+
+.close{
+  color: white;
+} 
+
+#header_detail{
+  text-align: center;
+  color: rgb(184, 183, 183);
+}
+
+.modal-body, .modal-footer{
+  background-color: rgba(240, 181, 181, 0.2);
+}
+
+.security_label{
+  font-weight: bold;
+  padding-top: 10px;
+}
+
+.security_descp{
+  padding-bottom: 10px;
+  color: rgb(173, 172, 172);
+}
+
+.key_value{
+  padding-top: 30%;
+  
+}
+
+.copy_btn{
+  padding-top: 25%;
+}
+
+.labelx{
+  background-color: white;
+  border-bottom: 1px solid rgba(240, 181, 181, 0.2);
+}
+
+.key_value_col{
+  background-color:  rgba(202, 199, 199, 0.3);
+  border-bottom: 1px solid rgb(245, 245, 245);
+}
+
+.copy_btn_col{
+  background-color:  rgba(202, 199, 199, 0.3);
+  border-bottom: 1px solid rgb(245, 245, 245);
+}
+
+.modal-body .container-fluid .row{
+  
+}
+
+.modal-body .container-fluid{
+  border: 2px solid rgb(219, 219, 219);
+}
+
+.collab_label_head{
+  font-weight: bold;
+  padding-top: 10px;
+}
+
+.collab_label_descp{
+  padding-bottom: 10px;
+  color: rgb(173, 172, 172);
+}
+
+.collab_label{
+  background-color: white; 
+}
+
+.collab_descp{
+  background-color:  rgba(202, 199, 199, 0.3);
+}
+
+#email{
+  font-size: 1.3em;
+  background-color:transparent;
+  border: 0;
+  box-shadow: none;
+  margin-top: 12%;
+  border-bottom: 2px solid rgb(76, 170, 241, 0.5);
+}
+
+/* App Info CSS End */
+
+/* Align modal vertically center start */
+.modal {
+  text-align: center;
+  padding: 0!important;
+}
+
+.modal:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -4px;
+}
+
+.modal-dialog {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+}
+/* Align modal vertically center end */
+
+/* snackbar start */
+#snackbar {
+    visibility: hidden;
+    min-width: 250px;
+    margin-left: -125px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 2px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    bottom: 30px;
+    font-size: 17px;
+}
+
+#snackbar.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;} 
+    to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+    from {bottom: 30px; opacity: 1;} 
+    to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+}
+/* snackbar end */
+
+/* Tabbed Content CSS Start */
+.panel.panel-profile .clearfix div{
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+ul.activity-timeline > li:first-child:after {
+    border-left: 0px;
+}
+
+.cancel_modal{
+  margin: 5px;
+}
+
+.submit_modal{
+  margin: 5px;
+}
+#session_select{
+  font-size: 1.3em;
+  background-color:transparent;
+  border: 0;
+  box-shadow: none;
+  margin-top: 4%;
+  border-bottom: 2px solid rgb(76, 170, 241, 0.5);
+}
+
+/* Tabbed Content CSS End */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
