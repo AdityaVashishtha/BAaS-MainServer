@@ -383,6 +383,25 @@ $(document).ready(function() {
 		});
 	});
 
+	/*Start stop app*/
+	$('#startApp').on('click',function(){
+		var appName = $(this).attr('name');
+		var data = {
+			appName: appName,
+		};
+		$.ajax({
+			url: '/dashboard/startApplication',
+			type:'POST',
+			data: data,
+			success: function(result){				
+				toastr.options.timeOut = false;
+					toastr.options.closeButton = true;
+					toastr['success']('Application Started <b>Successfully!</b> ('+result+')');
+			}
+		});
+		return false;
+	});
+
 	/* Create Application Post Form */
 	$('#create-app-submit').on('click',function(){
 		var applicationName = $('input[name="applicationName"]').val();		

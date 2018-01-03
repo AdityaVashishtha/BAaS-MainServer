@@ -92,6 +92,10 @@ app.post('/createApplication',(req,res)=>{
     }             
 });
 
+app.post('/dashboard/startApplication',(req,res)=>{
+    res.send(req.body.appName);
+});
+
 
 // Authentication Check
 function authenticateAccess(req,res,next){
