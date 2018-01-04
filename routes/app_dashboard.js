@@ -16,6 +16,21 @@ router.get('/',authenticateAccess,(req,res)=>{
     res.render('index',page_param);
 });
 
+router.get('/ref/:appID',(req,res)=>{
+    if(req.isAuthenticated) {
+        let user = req.user;        
+        setTimeout(()=>{
+            console.log('TODO Authentication via 3000 or app home..');
+            res.redirect("http://localhost:4200/dashboard");            
+        },1000);
+    } else {
+        res.status(401).send();
+    }    
+});
+
+//BELOW THIS CLEANING IS NEED FOR OLD CODE .. 
+
+
 //Shubham is Working on app-analytics
 router.get('/analytics',(req,res)=>{
     let page_param = {

@@ -82,10 +82,12 @@ form>.field:not(:last-child) {
     box-shadow: 0 0 0 0;
     border-top-left-radius: 0.75em;
     border-top-right-radius: 0.75em;
+    border-radius: 0.75em;
 }
 
 .panel-heading {
     background: #4a5d83;
+    background: #349FFF;    
     color: white;
     border-top-left-radius: 0.75em;
     border-top-right-radius: 0.75em;
@@ -94,6 +96,21 @@ form>.field:not(:last-child) {
 .panel-body>.bg-primary {
     background: #4a5d83;
     background: linear-gradient(#4a5d83, #4c3565);
+    background: linear-gradient( #349FFF,#7659ff);
+}
+
+.panel-heading.app-active {
+    background:  #00d977;
+}
+.panel-body>.app-active {
+    background: #4a5d83;
+    background: linear-gradient( #00d977,#32c39b);    
+}
+.panel-heading.app-not-active {
+    background: #aaa;    
+}
+.panel-body>.app-not-active {
+    background: #aaa;
 }
 
 .wire-btn {

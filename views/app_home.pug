@@ -26,35 +26,34 @@ block includes
                                 button.btn.btn-default(type='button', class="btn btn-lg wire-btn",data-toggle='modal', data-target='#newappmodal') Create app  
                                     i.lnr.lnr-plus-circle
                     .panel.col-md-3.no-padding.animated.flipInX.item(data-id="2")
-                        .panel-heading
+                        .panel-heading.app-active
                             h3.panel-title Library
                             .right
                                 i.lnr.lnr-menu.fa-2x.handle
                                 button.btn-toggle-collapse(type='button')
                                     i.lnr.lnr-chevron-up
                         .panel-body.no-padding.text-center
-                            .bg-primary.padding-top-30.padding-bottom-30
+                            .bg-primary.padding-top-30.padding-bottom-30.app-active
                                 i.lnr.lnr-book.fa-5x
                                 h3 Simple Library                                
                             div.padding-top-30.padding-bottom-30
-                                a(href="http://localhost:4200/dashboard" target="blank" class="btn btn-lg wire-btn") Dashboard                                    
-                                a(href="/appId" id="startApp" name="myAppName"  class="btn btn-lg wire-btn") Start
-                                a(href="/appId" class="btn btn-lg wire-btn") Logs
+                                a(href="/dashboard/ref/bookie" class="btn btn-lg wire-btn") Dashboard                                    
+                                a(href="/appId" id="startApp" name="myAppName"  class="btn btn-lg wire-btn") Stop                                
+                    // new thing
                     .panel.col-md-3.no-padding.animated.flipInX.item(data-id="1")
-                        .panel-heading
+                        .panel-heading.app-not-active
                             h3.panel-title Store
                             .right
                                 i.lnr.lnr-menu.fa-2x.handle
                                 button.btn-toggle-collapse(type='button')
                                     i.lnr.lnr-chevron-up                                
                         .panel-body.no-padding.text-center
-                            .bg-primary.padding-top-30.padding-bottom-30
+                            .bg-primary.padding-top-30.padding-bottom-30.app-not-active
                                 i.lnr.lnr-rocket.fa-5x
                                 h3 Store
                             div.padding-top-30.padding-bottom-30
-                                a(href="/dashboard" class="btn btn-lg wire-btn") Dashboard                                    
-                                a(href="/appId" class="btn btn-lg wire-btn") Settings
-                                a(href="/appId" class="btn btn-lg wire-btn") Logs  
+                                a(href="/" target="blank" class="btn btn-lg wire-btn") Dashboard                                    
+                                a(href="/appId" id="startApp" name="myAppName"  class="btn btn-lg wire-btn") Start 
         .loader
             .load-bar
                     .bar

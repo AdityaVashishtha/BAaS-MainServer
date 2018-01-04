@@ -396,7 +396,7 @@ $(document).ready(function() {
 			success: function(result){				
 				toastr.options.timeOut = false;
 					toastr.options.closeButton = true;
-					toastr['success']('Application Started <b>Successfully!</b> ('+result+')');
+					toastr['success']('Todo Start application in backend :: '+result+'');
 			}
 		});
 		return false;
