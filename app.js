@@ -86,9 +86,10 @@ app.post('/createApplication',(req,res)=>{
         return;
     } else {
         console.log("Application Creation Request By ::" + req.user.username);
-        setTimeout(()=>{
-            res.send('3 Sec response(Dummy Response to do create application here!!)');
-        },3000);
+        console.log(req.body);
+        // setTimeout(()=>{
+        //     res.send('3 Sec response(Dummy Response to do create application here!!)');
+        // },3000);
     }             
 });
 
