@@ -40,20 +40,21 @@ block includes
                                 a(href="/dashboard/ref/bookie" class="btn btn-lg wire-btn") Dashboard                                    
                                 a(href="/appId" id="startApp" name="myAppName"  class="btn btn-lg wire-btn") Stop                                
                     // new thing
-                    .panel.col-md-3.no-padding.animated.flipInX.item(data-id="1")
-                        .panel-heading.app-not-active
-                            h3.panel-title Store
-                            .right
-                                i.lnr.lnr-menu.fa-2x.handle
-                                button.btn-toggle-collapse(type='button')
-                                    i.lnr.lnr-chevron-up                                
-                        .panel-body.no-padding.text-center
-                            .bg-primary.padding-top-30.padding-bottom-30.app-not-active
-                                i.lnr.lnr-rocket.fa-5x
-                                h3 Store
-                            div.padding-top-30.padding-bottom-30
-                                a(href="/" target="blank" class="btn btn-lg wire-btn") Dashboard                                    
-                                a(href="/appId" id="startApp" name="myAppName"  class="btn btn-lg wire-btn") Start 
+                    each app,i in appData
+                        .panel.col-md-3.no-padding.animated.flipInX.item(data-id="#{i}")
+                            .panel-heading.app-not-active
+                                h3.panel-title #{app.name}
+                                .right
+                                    i.lnr.lnr-menu.fa-2x.handle
+                                    button.btn-toggle-collapse(type='button')
+                                        i.lnr.lnr-chevron-up                                
+                            .panel-body.no-padding.text-center
+                                .bg-primary.padding-top-30.padding-bottom-30.app-not-active
+                                    i.lnr.lnr-rocket.fa-5x
+                                    h3 #{app.name}@#{app.port}
+                                div.padding-top-30.padding-bottom-30
+                                    a(href="/" target="blank" class="btn btn-lg wire-btn") Dashboard                                    
+                                    a(href="/appId" id="startApp" name="myAppName"  class="btn btn-lg wire-btn") Start 
         .loader
             .load-bar
                     .bar
