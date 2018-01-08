@@ -11,6 +11,7 @@ const config = require("./config/config");
 const db_config = require("./config/database");
 
 const app = express();
+const App = require('./models/application.js');
 
 // Setting body parser
 // parse application/x-www-form-urlencoded
@@ -68,16 +69,27 @@ app.set('view engine','pug');
 
 // Index Page default Route set
 app.get('/',authenticateAccess,(req,res)=>{     
-    console.log('Request of (' + res.locals.user.username + ') from IP:: ' + req.connection.remoteAddress);   
-    let page_param = {
-        title: 'Home',
-        search_bar: false,
-        navbar: true,
-        sidebar: false,
-        notification: true,
-        help_button: false
-    };
-    res.render('app_home',page_param);
+    console.log('Request of (' + res.locals.user.username + ') from IP:: ' + req.connection.remoteAddress);  
+	
+	App.findOne({username: req.user.username}, function (err, application) {
+		let appData = null
+		if(application){
+			appData= application.apps	
+		}
+			console.log(appData)
+		let page_param = {
+			title: 'Home',
+			search_bar: false,
+			navbar: true,
+			sidebar: false,
+			notification: true,
+			help_button: false,
+			appData: appData
+		};
+		res.render('app_home',page_param);
+	});
+		
+	
 });
 
 app.post('/createApplication',(req,res)=>{
@@ -86,10 +98,30 @@ app.post('/createApplication',(req,res)=>{
         return;
     } else {
         console.log("Application Creation Request By ::" + req.user.username);
-        console.log(req.body);
-        // setTimeout(()=>{
-        //     res.send('3 Sec response(Dummy Response to do create application here!!)');
-        // },3000);
+       // setTimeout(()=>{
+         //   res.send('3 Sec response(Dummy Response to do create application here!!)');
+        //},3000);
+		
+		App.findOne({username: req.user.username}, function (err, application) {
+			if(!application){
+					application = new App();
+					application.username = req.user.username;
+			}
+				console.log(req.body);	
+			var ar = {
+				name : req.body.applicationName,
+				port : req.body.port
+			};
+			application.apps.push(ar);
+			
+			application.save(function (err) {
+				if(err) {
+					console.error('ERROR!');
+				}
+				console.log("Application created: " + application);
+				res.send("Application created: " + req.body.applicationName );
+			});	
+		});
     }             
 });
 
