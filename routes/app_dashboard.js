@@ -18,7 +18,7 @@ router.get('/',authenticateAccess,(req,res)=>{
 
 router.get('/ref/:appID',(req,res)=>{
     if(req.isAuthenticated) {
-        let user = req.user;        
+        let user = req.user;       
         setTimeout(()=>{
             console.log('TODO Authentication via 3000 or app home..');
             res.redirect("http://localhost:4200/dashboard");            
