@@ -76,8 +76,8 @@ app.get('/',authenticateAccess,(req,res)=>{
 		if(application){
 			appData= application.apps	
         }
-        console.log("This is not good");
-		console.log(appData)
+        // console.log("This is not good");
+		// console.log(appData)
 		let page_param = {
 			title: 'Home',
 			search_bar: false,

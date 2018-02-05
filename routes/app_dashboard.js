@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-
+const http = require("http");
 //This router is main router to appID
 
 router.get('/',authenticateAccess,(req,res)=>{     
@@ -20,7 +20,35 @@ router.get('/ref/:appID',(req,res)=>{
     if(req.isAuthenticated) {
         let user = req.user;       
         setTimeout(()=>{
-            console.log('TODO Authentication via 3000 or app home..');
+            console.log('TODO Authentication via 3000 or app home..');            
+            let user = {
+                username: req.user.username,
+                password: req.user.password,
+                isSuper: true
+            }
+            var post_data = JSON.stringify(user);
+            let postOptions = {
+                host: 'localhost',                                
+                port: '4000',
+                path: '/dashboard/authenticate',
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json', 
+                    'Content-Length': Buffer.byteLength(post_data)
+                },
+                data: user
+            };            
+            let postReq = http.request(postOptions,(res)=>{
+                res.setEncoding('utf8');
+                res.on('data', function (body) {
+                    console.log('Body: ' + body);
+                });
+            });
+            postReq.on('error', function(e) {
+                console.log('problem with request: ' + e.message);
+            });
+            postReq.write(post_data);
+            postReq.end();
             res.redirect("http://localhost:4200/dashboard");            
         },1000);
     } else {
