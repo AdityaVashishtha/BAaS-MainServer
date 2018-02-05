@@ -54,7 +54,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(passport.authenticate('remember-me'));
 
-// Setting global variable for user when logged in
+// Setting global variable for user when logged in 
 app.get('*',(req, res, next)=>{    
     res.locals.user = req.user || null;
     next();
