@@ -41,7 +41,7 @@ block includes
                                 a(href="/appId" id="startApp" name="myAppName"  class="btn btn-lg wire-btn") Stop                                
                     // new thing
                     each app,i in appData
-                        .panel.col-md-3.no-padding.animated.flipInX.item(data-id="#{i}")
+                        .panel.col-md-3.no-padding.animated.flipInX.item(data-id=i+3)
                             .panel-heading.app-not-active
                                 h3.panel-title #{app.name}
                                 .right
@@ -54,7 +54,7 @@ block includes
                                     h3 #{app.name}@#{app.port}
                                 div.padding-top-30.padding-bottom-30
                                     a(href="/" target="blank" class="btn btn-lg wire-btn") Dashboard                                    
-                                    a(href="/appId" id="startApp" name="myAppName"  class="btn btn-lg wire-btn") Start 
+                                    a(href="" id="startApp" name=app.name  class="startApp btn btn-lg wire-btn") Start 
         .loader
             .load-bar
                     .bar

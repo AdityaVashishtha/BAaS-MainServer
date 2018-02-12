@@ -384,7 +384,7 @@ $(document).ready(function() {
 	});
 
 	/*Start stop app*/
-	$('#startApp').on('click',function(){
+	$('.startApp').on('click',function(){
 		var appName = $(this).attr('name');
 		var data = {
 			appName: appName,

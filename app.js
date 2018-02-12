@@ -9,6 +9,8 @@ const flash = require("connect-flash");
 const cookieParser = require("cookie-parser");
 const config = require("./config/config");
 const db_config = require("./config/database");
+const fs = require('fs-extra');
+const copydir = require('copy-dir');
 
 const app = express();
 const App = require('./models/application.js');
@@ -120,14 +122,36 @@ app.post('/createApplication',(req,res)=>{
 					console.error('ERROR!');
 				}
 				console.log("Application created: " + application);
-				res.send("Application created: " + req.body.applicationName );
+				console.log("Creating folder:");
+				const dir = ''+req.user.username+'/'+req.body.applicationName;
+				
+/*				copydir('../backend-dashboard','../'+dir, function(err){
+				  if(err){
+					console.log(err);
+				  } else {
+					console.log('ok');
+					res.send("Application created: " + req.body.applicationName );
+				  }
+				});
+
+*/	
+
+				fs.copy('../backend-dashboard', '../'+dir, err => {
+				  if (err) return console.error(err)
+
+				  console.log('success!')
+				  res.send("Application created: " + req.body.applicationName );
+				}) // copies directory, even if it has subdirectories or files
+
+			
 			});	
 		});
     }             
 });
 
 app.post('/dashboard/startApplication',(req,res)=>{
-    res.send(req.body.appName);
+    console.log("Application start request: " + req.body.appName + " user:: "+req.user.username);
+	res.send(req.body.appName);
 });
 
 
