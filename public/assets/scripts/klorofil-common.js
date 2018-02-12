@@ -393,10 +393,10 @@ $(document).ready(function() {
 			url: '/dashboard/startApplication',
 			type:'POST',
 			data: data,
-			success: function(result){				
+			success: function(result){					
 				toastr.options.timeOut = false;
-					toastr.options.closeButton = true;
-					toastr['success']('Todo Start application in backend :: '+result+'');
+				toastr.options.closeButton = true;
+				toastr['success']('Todo Start application in backend :: '+result+'');
 			}
 		});
 		return false;
@@ -405,17 +405,19 @@ $(document).ready(function() {
 	/* Create Application Post Form */
 	$('#create-app-submit').on('click',function(){
 		var applicationName = $('input[name="applicationName"]').val();		
-		var port = $('input[name="portNumber"]').val();		
+		var port = $('input[name="portNumber"]').val();
+		var secret = $('input[name="secret"]').val();
 		applicationData = {
 			applicationName: applicationName,
-			port: port
+			port: port,
+			secret: secret,
 		};		
 		if(applicationCreationValidation(applicationData)) {
 			$.ajax({			
 				url: '/createApplication',			
 				type: 'POST',				
 				data:applicationData,
-				beforeSend: function() {				
+				beforeSend: function() {
 					$('.loader').show();
 				},
 				error: function(xhr,status,error){				
@@ -423,12 +425,19 @@ $(document).ready(function() {
 					alert("Some Error Occured :: " + error );
 				},
 				success: function(result) {
-					// Do something with the result				
+					// Do something with the result			
 					$('.loader').hide();
-					$('.input-lg').val('');
-					toastr.options.timeOut = false;
-					toastr.options.closeButton = true;
-					toastr['success']('Application Created <b>Successfully!</b> status:('+result+')');
+					$('.input-lg').val('');					
+					if(result.success)	{
+						toastr.options.timeOut = false;
+						toastr.options.closeButton = true;
+						toastr['success'](result.message);
+						setTimeout(() => {
+							window.location = './';
+						}, 1000);						
+					} else {
+						toastr['error'](result.message);
+					}
 				}
 			});
 		} 	

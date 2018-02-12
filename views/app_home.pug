@@ -37,24 +37,22 @@ block includes
                                 i.lnr.lnr-book.fa-5x
                                 h3 Simple Library                                
                             div.padding-top-30.padding-bottom-30
-                                a(href="/dashboard/ref/bookie" class="btn btn-lg wire-btn") Dashboard                                    
-                                a(href="/appId" id="startApp" name="myAppName"  class="btn btn-lg wire-btn") Stop                                
+                                a(href="/dashboard/ref/bookie" class="btn btn-lg wire-btn") Dashboard                                                                    
                     // new thing
                     each app,i in appData
                         .panel.col-md-3.no-padding.animated.flipInX.item(data-id=i+3)
-                            .panel-heading.app-not-active
+                            .panel-heading.app-active
                                 h3.panel-title #{app.name}
                                 .right
                                     i.lnr.lnr-menu.fa-2x.handle
                                     button.btn-toggle-collapse(type='button')
                                         i.lnr.lnr-chevron-up                                
                             .panel-body.no-padding.text-center
-                                .bg-primary.padding-top-30.padding-bottom-30.app-not-active
-                                    i.lnr.lnr-rocket.fa-5x
-                                    h3 #{app.name}:#{app.port}
-                                div.padding-top-30.padding-bottom-30
+                                .bg-primary.padding-top-30.padding-bottom-30.app-active
+                                    i.lnr.lnr-rocket.fa-5x                                    
+                                    h3 #{app.port}
+                                div.padding-top-30.padding-bottom-30                                    
                                     a(href="/" target="blank" class="btn btn-lg wire-btn") Dashboard                                    
-                                    a(href="/appId" id="startApp" name="myAppName"  class="btn btn-lg wire-btn") Start 
         .loader
             .load-bar
                     .bar
@@ -78,6 +76,18 @@ block includes
                                     i.fa.fa-cloud
                                 input.form-control.input-lg( name="applicationName", placeholder="Application Name")
                             small.form-text.text-danger (Required)
+                        .form-group               
+                            .input-group                     
+                                span.input-group-addon
+                                    i.fa.fa-cogs         
+                                input.form-control.input-lg( type="number", name="portNumber" placeholder="Port Number")
+                            small.form-text.text-danger (Valid Range 3000-65000)
+                        .form-group               
+                            .input-group                     
+                                span.input-group-addon
+                                    i.fa.fa-key         
+                                input.form-control.input-lg( type="text", name="secret" placeholder="App Secret String")
+                            small.form-text.text-danger (Required)                                          
                         a.text-info(data-toggle='collapse', href='#newAppAdvanceOptions', aria-expanded='false', aria-controls='multiCollapseExample1') Advance Option                             
                         #newAppAdvanceOptions.collapse.multi-collapse                        
                             hr                                                        
@@ -85,8 +95,8 @@ block includes
                                 .input-group                     
                                     span.input-group-addon
                                         i.fa.fa-cogs         
-                                    input.form-control.input-lg( type="text", name="portNumber" placeholder="Port Number")
-                                small.form-text.text-danger (Valid Range 3000-65000)
+                                    input.form-control.input-lg( type="text", name="mongoDbUrl" placeholder="Mongo Db Url")
+                                small.form-text.text-danger
                     .modal-footer
                         button.btn.btn-success#create-app-submit(type='button', onclick='', data-dismiss='modal') Create
                         button.btn.btn-danger(type='button', onclick='',data-dismiss='modal') Cancel

@@ -2,5 +2,6 @@
 /.vscode
 /.idea
 /_generated_application
+/_*
 package-lock.json
 *.log.*
