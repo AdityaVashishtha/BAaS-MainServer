@@ -9,6 +9,8 @@ const flash = require("connect-flash");
 const cookieParser = require("cookie-parser");
 const config = require("./config/config");
 const db_config = require("./config/database");
+const fs = require('fs-extra');
+const copydir = require('copy-dir');
 
 const app = express();
 const App = require('./models/application.js');
@@ -136,17 +138,36 @@ app.post('/createApplication', (req, res) => {
 					};
 					console.log(applicationConfig);
 					console.log("Application created: " + application);
-					res.json({
-						success: true,
-						message: "Application Created Successfully"
+					console.log("Creating folder:");
+					const dir = './_generated_application/'+req.user.username+'/'+req.body.applicationName;
+					
+	/*				copydir('../backend-dashboard','../'+dir, function(err){
+					if(err){
+						console.log(err);
+					} else {
+						console.log('ok');
+						res.send("Application created: " + req.body.applicationName );
+					}
 					});
+
+	*/	
+
+					fs.copy('../backend-dashboard', dir, err => {
+						if (err) return console.error(err)
+						console.log('success!')
+						res.json({
+							success: true,
+							message: "Application Created Successfully"
+						});
+					}); // copies directory, even if it has subdirectories or files					
 				}				
 			});
 		});
 	}
 });
 
-app.post('/dashboard/startApplication', (req, res) => {
+app.post('/dashboard/startApplication',(req,res)=>{
+    console.log("Application start request: " + req.body.appName + " user:: "+req.user.username);
 	res.send(req.body.appName);
 });
 
