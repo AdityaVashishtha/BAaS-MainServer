@@ -20,7 +20,7 @@ router.get('/ref/:appID',(req,res)=>{
     if(req.isAuthenticated) {
         let user = req.user;       
         setTimeout(()=>{
-            console.log('TODO Authentication via 3000 or app home..');            
+            //console.log('TODO Authentication via 3000 or app home..');            
             let user = {
                 username: req.user.username,
                 password: req.user.password,

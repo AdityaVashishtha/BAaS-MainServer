@@ -83,7 +83,7 @@ app.get('/', authenticateAccess, (req, res) => {
 		let appData = [];
 		if (application) {
 			appData = application.apps;
-			console.log(application.apps);
+			//console.log(application.apps);
 		}
 		// console.log("This is not good");
 		// console.log(appData)
@@ -110,38 +110,61 @@ app.post('/createApplication', (req, res) => {
 		console.log("Application Creation Request By ::" + req.user.username);
 		App.findOne({
 			username: req.user.username
-		}, function (err, application) {
+		}, (err, application) => {
 			if (!application || application == null) {
 				application = new App();
 				application.username = req.user.username;
-			}			
+			}
 			let tempApplication = {
 				name: req.body.applicationName.toLowerCase().trim(),
 				port: req.body.port
 			};
-			application.apps.push(tempApplication);
-			application.save(function (err) {
-				if (err) throw err;				
-				else {
+			application.apps =  application.apps.concat([tempApplication]);
+			application.save((err) => {
+				if (err) throw err;
+				else {					
 					let applicationConfig = {
+						author: req.user.username,	
+						hash: req.user.password,						
 						appName: tempApplication.name,
 						port: tempApplication.port,
 						hostname: 'localhost',
 						app_secret: req.body.secret.toString().trim(),
 						database: {
-							name: tempApplication.name.toLowerCase()+'_db',
+							name: tempApplication.name.toLowerCase() + '_db',
 							hostname: 'localhost',
 							port: 27017,
 							username: '',
 							password: '',
-						}
+						},
+						needInitialization: true
 					};
 					console.log(applicationConfig);
 					console.log("Application created: " + application);
-					console.log("Creating folder:");
-					const dir = './_generated_application/'+req.user.username+'/'+req.body.applicationName;
-					
-	/*				copydir('../backend-dashboard','../'+dir, function(err){
+					console.log("Creating application folder ...");
+					const dir = '../_generated_application/' + req.user.username + '/' + req.body.applicationName;
+					// copies directory, even if it has subdirectories or files		
+					fs.copy('../backend-dashboard-1.0.0', dir, err => {
+						if (err) return console.error(err);
+						else {
+								console.log(req.user);
+								console.log("Initializing config file ...");
+								var fileSystem = require('fs');
+								fileSystem.writeFile(dir + '/config/config.json', JSON.stringify(applicationConfig, 2, null), function (err) {
+									if (err) {
+										return console.log(err);
+									} else {
+										res.json({
+											success: true,
+											message: "Application Created Successfully"
+										});																								
+									}									
+								});
+						}
+					});
+					/****
+					**** Old Code 
+					copydir('../backend-dashboard','../'+dir, function(err){
 					if(err){
 						console.log(err);
 					} else {
@@ -149,25 +172,16 @@ app.post('/createApplication', (req, res) => {
 						res.send("Application created: " + req.body.applicationName );
 					}
 					});
-
-	*/	
-
-					fs.copy('../backend-dashboard', dir, err => {
-						if (err) return console.error(err)
-						console.log('success!')
-						res.json({
-							success: true,
-							message: "Application Created Successfully"
-						});
-					}); // copies directory, even if it has subdirectories or files					
-				}				
+					*/								
+				}
 			});
 		});
 	}
 });
 
-app.post('/dashboard/startApplication',(req,res)=>{
-    console.log("Application start request: " + req.body.appName + " user:: "+req.user.username);
+
+app.post('/dashboard/startApplication', (req, res) => {
+	console.log("Application start request: " + req.body.appName + " user:: " + req.user.username);
 	res.send(req.body.appName);
 });
 
