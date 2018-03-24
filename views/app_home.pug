@@ -25,24 +25,11 @@ block includes
                                 // Button trigger modal
                                 button.btn.btn-default(type='button', class="btn btn-lg wire-btn",data-toggle='modal', data-target='#newappmodal') Create app  
                                     i.lnr.lnr-plus-circle
-                    .panel.col-md-3.no-padding.animated.flipInX.item(data-id="2")
-                        .panel-heading.app-active
-                            h3.panel-title Library
-                            .right
-                                i.lnr.lnr-menu.fa-2x.handle
-                                button.btn-toggle-collapse(type='button')
-                                    i.lnr.lnr-chevron-up
-                        .panel-body.no-padding.text-center
-                            .bg-primary.padding-top-30.padding-bottom-30.app-active
-                                i.lnr.lnr-book.fa-5x
-                                h3 Simple Library                                
-                            div.padding-top-30.padding-bottom-30
-                                a(href="/dashboard/ref/bookie" class="btn btn-lg wire-btn") Dashboard                                                                    
+                                                                                   
                     // new thing
                     each app,i in appData
                         .panel.col-md-3.no-padding.animated.flipInX.item(data-id=i+3)
                             .panel-heading.app-active
-                                h3.panel-title #{app.name}
                                 .right
                                     i.lnr.lnr-menu.fa-2x.handle
                                     button.btn-toggle-collapse(type='button')
@@ -50,16 +37,18 @@ block includes
                             .panel-body.no-padding.text-center
                                 .bg-primary.padding-top-30.padding-bottom-30.app-active
                                     i.lnr.lnr-rocket.fa-5x                                    
-                                    h3 #{app.port}
+                                    h3 #{app.name}
+                                    h4 #{app.port}
                                 div.padding-top-30.padding-bottom-30                                    
-                                    a(href="/" target="blank" class="btn btn-lg wire-btn") Dashboard                                    
+                                    a(href="http://localhost:"+app.port+"/" target="_" class="btn btn-lg wire-btn") Dashboard                                    
         .loader
             .load-bar
                     .bar
                     .bar
                     .bar                              
             .loading-bar.app-creation-loading.text-center
-                h2 Creating your App Please wait (Dummy) ...
+                h2 Creating your App!
+                h3 This may take some time.Please wait ...
                 i.fa.fa-cloud.fa-5x.animated.jello.infinite
         // Modal For App Creation - Using Ajax for it
         #newappmodal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='newappmodalLabel', aria-hidden='true')
@@ -88,7 +77,7 @@ block includes
                                     i.fa.fa-key         
                                 input.form-control.input-lg( type="text", name="secret" placeholder="App Secret String")
                             small.form-text.text-danger (Required)                                          
-                        a.text-info(data-toggle='collapse', href='#newAppAdvanceOptions', aria-expanded='false', aria-controls='multiCollapseExample1') Advance Option                             
+                        a.text-info(data-toggle='collapse', href='#newAppAdvanceOptions', aria-expanded='false', aria-controls='multiCollapseExample1') Advanced Options                             
                         #newAppAdvanceOptions.collapse.multi-collapse                        
                             hr                                                        
                             .form-group               

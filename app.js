@@ -119,13 +119,13 @@ app.post('/createApplication', (req, res) => {
 				name: req.body.applicationName.toLowerCase().trim(),
 				port: req.body.port
 			};
-			application.apps =  application.apps.concat([tempApplication]);
+			application.apps = application.apps.concat([tempApplication]);
 			application.save((err) => {
 				if (err) throw err;
-				else {					
+				else {
 					let applicationConfig = {
-						author: req.user.username,	
-						hash: req.user.password,						
+						author: req.user.username,
+						hash: req.user.password,
 						appName: tempApplication.name,
 						port: tempApplication.port,
 						hostname: 'localhost',
@@ -145,21 +145,26 @@ app.post('/createApplication', (req, res) => {
 					const dir = '../_generated_application/' + req.user.username + '/' + req.body.applicationName;
 					// copies directory, even if it has subdirectories or files		
 					fs.copy('../backend-dashboard-1.0.0', dir, err => {
-						if (err) return console.error(err);
+						if (err) {
+							console.error(err);
+							return err
+						}
 						else {
-								console.log(req.user);
-								console.log("Initializing config file ...");
-								var fileSystem = require('fs');
-								fileSystem.writeFile(dir + '/config/config.json', JSON.stringify(applicationConfig, 2, null), function (err) {
-									if (err) {
-										return console.log(err);
-									} else {
-										res.json({
-											success: true,
-											message: "Application Created Successfully"
-										});																								
-									}									
-								});
+							console.log(req.user);
+							console.log("Initializing config file ...");
+							var fileSystem = require('fs');
+							fileSystem.writeFile(dir + '/config/config.json', JSON.stringify(applicationConfig, 2, null), function (err) {
+								if (err) {
+									console.log(err);
+									return  err
+								} else {
+									console.log("Config file created successfully!!!")
+									res.json({
+										success: true,
+										message: "Application Created Successfully"
+									});
+								}
+							});
 						}
 					});
 					/****
@@ -172,7 +177,7 @@ app.post('/createApplication', (req, res) => {
 						res.send("Application created: " + req.body.applicationName );
 					}
 					});
-					*/								
+					*/
 				}
 			});
 		});
