@@ -17,33 +17,6 @@ block navbar
                   button.btn.btn-primary(type='button') Go          
           #navbar-menu
             ul.nav.navbar-nav.navbar-right
-              li.dropdown
-                a.dropdown-toggle.icon-menu(href='#', data-toggle='dropdown')
-                  i.lnr.lnr-alarm
-                  span.badge.bg-danger 5
-                ul.dropdown-menu.notifications
-                  li
-                    a.notification-item(href='#')
-                      span.dot.bg-warning
-                      | System space is almost full
-                  li
-                    a.notification-item(href='#')
-                      span.dot.bg-danger
-                      | You have 9 unfinished tasks
-                  li
-                    a.notification-item(href='#')
-                      span.dot.bg-success
-                      | Monthly report is available
-                  li
-                    a.notification-item(href='#')
-                      span.dot.bg-warning
-                      | Weekly meeting in 1 hour
-                  li
-                    a.notification-item(href='#')
-                      span.dot.bg-success
-                      | Your request has been approved
-                  li
-                    a.more(href='#') See all notifications
               if help_button
                 li.dropdown
                   a.dropdown-toggle(href='#', data-toggle='dropdown')
