@@ -137,6 +137,9 @@ app.post('/createApplication', (req, res) => {
 							username: '',
 							password: '',
 						},
+						pythonServer:{
+							url:"http://localhost:5000"
+						}, 
 						needInitialization: true
 					};
 					console.log(applicationConfig);
@@ -154,9 +157,15 @@ app.post('/createApplication', (req, res) => {
 									if (err) {
 										return console.log(err);
 									} else {
-										res.json({
-											success: true,
-											message: "Application Created Successfully"
+										fileSystem.writeFile(dir + '/pythonserver/config.json', JSON.stringify(applicationConfig, 2, null), function (err) {
+											if (err) {
+												return console.log(err);
+											} else {
+												res.json({
+													success: true,
+													message: "Application Created Successfully"
+												});																								
+											}									
 										});																								
 									}									
 								});
