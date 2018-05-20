@@ -1,4 +1,4 @@
-# major-1.0
+# MainServer-1.0
 
 ![alt text](./public/assets/img/logo-dark.png "BAaS Logo")
 
